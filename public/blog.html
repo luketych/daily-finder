@@ -45,7 +45,6 @@
           <li class="nav-item"><a href="blog.html?tags=[travel]" class="nav-link">Travel</a></li>
           <li class="nav-item"><a href="blog.html?tags=[tech]" class="nav-link">Tech</a></li>
           <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
-          <li class="nav-item cta"><a href="#email-sub" class="nav-link"><span>Subscribe</span></a></li>
         </ul>
       </div>
     </div>
@@ -221,10 +220,10 @@
 
 
 
+        const hostname = window.location.hostname
+        const port = window.location.port
 
-
-
-        fetch('http://localhost:3030/articles/')
+        fetch(`http://${hostname}:${port}/articles`)
         .then(response => response.json())
         .then(resp => {
             console.log('DATA')
