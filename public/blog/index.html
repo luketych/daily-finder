@@ -79,6 +79,9 @@
 
         const _id = urlParams.get('_id');
 
+        const hostname = window.location.hostname
+        const port = window.location.port
+
         // load json file
         fetch(`https://${hostname}:${port}/articles/${_id}`)
           .then(response => response.json())
