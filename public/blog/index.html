@@ -80,7 +80,7 @@
         const _id = urlParams.get('_id');
 
         // load json file
-        fetch('http://localhost:3030/articles/' + _id)
+        fetch(`https://${hostname}:${port}/articles/${_id}`)
           .then(response => response.json())
           .then(data => {
             // get blog title
