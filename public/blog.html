@@ -223,7 +223,7 @@
         const hostname = window.location.hostname
         const port = window.location.port
 
-        fetch(`https://${hostname}:${port}/articles`)
+        fetch(`https://${hostname}:${port}/articles?$limit=50`)
         .then(response => response.json())
         .then(resp => {
             console.log('DATA')
