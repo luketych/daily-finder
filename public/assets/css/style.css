@@ -9211,3 +9211,6 @@ textarea.form-control {
 .related-topics-ads {
   margin: 10px 0;
 }
+.related-topics-ads h6 {
+  font-weight: 600;
+}
