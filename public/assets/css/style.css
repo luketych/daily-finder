@@ -8149,9 +8149,9 @@ textarea.form-control {
   position: relative; 
 }
   /* @Luke */
-  @media (min-width: 767.98px) {
+  @media (max-width: 767.98px) {
     .ftco-section {
-      padding: 6em 0; 
+      padding: 0 0; 
     } 
   }
 
