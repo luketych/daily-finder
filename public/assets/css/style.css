@@ -9188,7 +9188,7 @@ textarea.form-control {
   -webkit-user-select: none;
   touch-action: manipulation;
   vertical-align: baseline;
-  white-space: nowrap;
+  white-space: normal;
   text-align: left;
   width: 100%;
 }
