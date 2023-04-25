@@ -1362,9 +1362,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"daily-finder2@workspace:.":
+"daily-finder@workspace:.":
   version: 0.0.0-use.local
-  resolution: "daily-finder2@workspace:."
+  resolution: "daily-finder@workspace:."
   dependencies:
     "@feathersjs/adapter-commons": ^5.0.1
     "@feathersjs/authentication": ^5.0.1
