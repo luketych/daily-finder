@@ -25,7 +25,7 @@
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id=%27+i+dl;f.parentNode.insertBefore(j,f);
+    'https://www.googletagmanager.com/gtm.js?id=' + i + dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-MXCSL68');</script>
     <!-- End Google Tag Manager -->
   </head>
@@ -166,10 +166,43 @@
     <script type="text/javascript">
 
 
-        function createBlogEntry(_id, title, text, tags=[]) {
+      // @chatgpt
 
-          console.log('createBlogEntry')
-          console.log(_id)
+      // Here's an example of a JavaScript function that generates random integers between x and y, and ensures that the same integer is not generated twice in a row, with the probability of generating the same integer decreasing over time:
+
+      let previousNumber = null;
+      let consecutiveSameNumberCount = 0;
+
+      // In this example, the previousNumber variable keeps track of the previously generated random integer, and the consecutiveSameNumberCount variable keeps track of the number of consecutive times the same integer has been generated. The function first checks if previousNumber is null or consecutiveSameNumberCount is greater than or equal to 2. If so, it generates a new random integer using Math.random() and sets it to previousNumber, while resetting consecutiveSameNumberCount to 0. If previousNumber is not null and consecutiveSameNumberCount is less than 2, it calculates the probability of generating the same number again based on consecutiveSameNumberCount, and uses Math.random() to decide whether to generate the same number or a new random number. The probability of generating the same number decreases over time, as consecutiveSameNumberCount increases.
+
+      function generateRandomInt(x, y) {
+        // If previousNumber is null or consecutiveSameNumberCount is greater than or equal to 2,
+        // generate a new random number
+        if (previousNumber === null || consecutiveSameNumberCount >= 2) {
+          previousNumber = Math.floor(Math.random() * (y - x + 1)) + x; // Generate random integer between x and y
+          consecutiveSameNumberCount = 0; // Reset consecutiveSameNumberCount
+        } else {
+          // If previousNumber is not null and consecutiveSameNumberCount is less than 2,
+          // calculate the probability of generating the same number again
+          const probability = 1 / (consecutiveSameNumberCount + 1);
+          const shouldGenerateSameNumber = Math.random() > probability;
+          
+          if (shouldGenerateSameNumber) {
+            // If the probability check passes, generate the same number as before
+            consecutiveSameNumberCount++;
+          } else {
+            // If the probability check fails, generate a new random number
+            previousNumber = Math.floor(Math.random() * (y - x + 1)) + x;
+            consecutiveSameNumberCount = 0; // Reset consecutiveSameNumberCount
+          }
+        }
+        
+        return previousNumber;
+      }
+
+
+
+        function createBlogEntry(_id, title, text, tags=[]) {
 
           const blogEntry = document.createElement('div');
           blogEntry.className = 'col-md-4 ftco-animate fadeInUp ftco-animated'; // @todo: I hardcoded in dateInUp and ftco-animated. It was stopping the image from showing.
@@ -182,7 +215,24 @@
           const link = document.createElement('a');
           link.href = `blog/index.html?_id=${_id}`;
           link.className = 'block-20';
-          link.style.backgroundImage = `url('./blog/images/${_id}.jpg')`;
+          //link.style.backgroundImage = `url('./blog/images/${_id}.jpg')`;
+
+          var img = new Image();
+          img.src = `./blog/images/${_id}.jpg`;
+
+          img.addEventListener('load', function() {
+            link.style.backgroundImage = `url('${img.src}')`;
+          });
+
+          // Add an event listener to check when the image fails to load
+          img.addEventListener('error', function() {
+            // If the image fails to load, set a default background image
+            
+            // random int between 0 and 9
+            const randInt = generateRandomInt(0, 9)
+
+            link.style.backgroundImage = `url('./assets/images/image_${randInt}.jpg')`;
+          });
 
           const textInner = document.createElement('div');
           textInner.className = 'text p-4 d-block';
@@ -220,23 +270,17 @@
         }
 
 
-
-
-
         const hostname = window.location.hostname
         const port = window.location.port
 
-        fetch(`https://${hostname}:${port}/articles?$limit=50`)
+        // for local development: use http://
+        const host = (hostname === 'localhost') ? `http://localhost:${port}` : `https://${hostname}:${port}`
+
+        fetch(`${host}/articles?$limit=50`)
         .then(response => response.json())
         .then(resp => {
-            console.log('DATA')
-
             resp.data.forEach(article => {
-              
                 let res = createBlogEntry(article._id, article.title, article.text, article.tags)
-
-                console.log(res)
-
                 document.querySelector('#content-row').appendChild(res)
             });
         });
