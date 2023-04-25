@@ -1,4 +1,4 @@
-# daily-finder2
+# daily-finder
 
 > 
 
