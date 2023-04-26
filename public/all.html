@@ -79,6 +79,7 @@
 
     <script type="text/javascript">
 
+        const NUM_RAND_IMGS = 20
 
         // @chatgpt
 
@@ -163,8 +164,15 @@
 
             let randImgIdx = randomIntArr[placeholderImageIdx]
 
+            console.log("placeholderImageIdx", placeholderImageIdx)
+
+            console.log("randImgIdx", randImgIdx)
+
             link.style.backgroundImage = `url('./assets/images/image_${randImgIdx}.jpg')`;
             placeholderImageIdx += 1
+            if (placeholderImageIdx >= NUM_RAND_IMGS) {
+              placeholderImageIdx = 0
+            }
           });
 
           const textInner = document.createElement('div');
@@ -203,7 +211,7 @@
         }
 
         let placeholderImageIdx = 0
-        const randomIntArr = generateUniqueRandArray(20)
+        const randomIntArr = generateUniqueRandArray(NUM_RAND_IMGS)
 
 
         const hostname = window.location.hostname
