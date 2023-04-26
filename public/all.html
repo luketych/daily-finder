@@ -155,8 +155,7 @@
             link.style.backgroundImage = `url('${img.src}')`;
           });
 
-          let placeholderImageIdx = 0
-          const randomIntArr = generateUniqueRandArray(20)
+
 
           // Add an event listener to check when the image fails to load
           img.addEventListener('error', function() {
@@ -202,6 +201,9 @@
 
           return article
         }
+
+        let placeholderImageIdx = 0
+        const randomIntArr = generateUniqueRandArray(20)
 
 
         const hostname = window.location.hostname
