@@ -3279,7 +3279,14 @@ input[type="button"].btn-block {
   margin-right: 1rem;
   font-size: 1.25rem;
   line-height: inherit;
-  white-space: nowrap; }
+  white-space: nowrap; 
+
+  border: none;
+  border-radius: 3pt;
+  box-shadow: 0 0 0 1pt white;
+  outline: none;
+  transition: 1s;
+}
   .navbar-brand:hover, .navbar-brand:focus {
     text-decoration: none; }
 
