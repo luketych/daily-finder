@@ -402,18 +402,27 @@
       // for local development: use http://
       const host = (hostname === 'localhost') ? `http://localhost:${port}` : `https://${hostname}:${port}`
 
-      // Get the search input element
       const searchInput = document.querySelector('.form-control');
 
-      // Listen for the "keydown" event on the search input
       searchInput.addEventListener('keydown', function(event) {
-        // Check if the pressed key is "Enter"
         if (event.key === 'Enter') {
-          // Get the search query
           const searchQuery = searchInput.value;
 
           // Redirect to the search results page with the query parameter
           window.location.href = `${host}/all.html?search=${encodeURIComponent(searchQuery)}`;
+        }
+      });
+
+
+      const newsletterFormDiv = document.querySelector('#email-sub > div > div > div')
+      const newsletterInput = document.querySelector('#email-sub input')
+
+      newsletterInput.addEventListener('keydown', function(event) {
+        if (event.key === 'Enter') {
+          const email = newsletterInput.value;
+
+          newsletterFormDiv.innerHTML = '<h3>You are subscribed!</h3>';
+
         }
       });
   </script>
