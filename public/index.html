@@ -31,7 +31,7 @@
     
     <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
       <div class="container">
-        <img class="logo" src="assets/images/logo.png" />
+        <!--<img class="logo" src="assets/images/logo.png" />-->
         <span class="horizontal-spacer" style="width:2em;"></span>
         <a class="navbar-brand" href="/index.html">DailyFinder</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
@@ -41,11 +41,12 @@
         <div class="collapse navbar-collapse" id="ftco-nav">
           <ul class="navbar-nav ml-auto">
             
-            <li class="nav-item active"><a href="/all.html?tags=[health-and-wellness]" class="nav-link">Health</a></li>
+            <li class="nav-item active"><a href="/all.html?tags=[health]" class="nav-link">Health</a></li>
             <li class="nav-item"><a href="/all.html?tags=[finance]" class="nav-link">Finance</a></li>
             <li class="nav-item"><a href="/all.html?tags=[travel]" class="nav-link">Travel</a></li>
             <li class="nav-item"><a href="/all.html?tags=[tech]" class="nav-link">Tech</a></li>
-            <li class="nav-item"><a href="/all.html" class="nav-link">All</a></li>
+            <li class="nav-item"><a href="/all.html?tags=[education]" class="nav-link">Education</a></li>
+
           </ul>
         </div>
       </div>
@@ -279,7 +280,7 @@
               <div class="tab-pane fade show active" id="v-pills-nextgen" role="tabpanel" aria-labelledby="v-pills-nextgen-tab">
               	<div class="d-md-flex">
 	              	<div class="one-forth align-self-center">
-	              		<img src="assets/images/health-and-wellness.jpg" class="img-fluid border" alt="">
+	              		<img src="assets/images/health.jpg" class="img-fluid border" alt="">
 	              	</div>
 	              	<div class="one-half ml-md-5 align-self-center">
 		                <h2 class="mb-4">Health</h2>
@@ -409,10 +410,10 @@
         // Check if the pressed key is "Enter"
         if (event.key === 'Enter') {
           // Get the search query
-          const query = searchInput.value;
+          const searchQuery = searchInput.value;
 
           // Redirect to the search results page with the query parameter
-          window.location.href = `${host}/all.html?query=${encodeURIComponent(query)}`;
+          window.location.href = `${host}/all.html?search=${encodeURIComponent(searchQuery)}`;
         }
       });
   </script>

@@ -24,7 +24,7 @@ export const dataValidator = addFormats(new Ajv({}), formats)
 
 export const queryValidator = addFormats(
   new Ajv({
-    coerceTypes: true
+    coerceTypes: "array"
   }),
   formats
 )

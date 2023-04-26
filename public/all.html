@@ -43,11 +43,12 @@
         <div class="collapse navbar-collapse" id="ftco-nav">
           <ul class="navbar-nav ml-auto">
             
-            <li class="nav-item active"><a href="/all.html?tags=[health-and-wellness]" class="nav-link">Health</a></li>
+            <li class="nav-item active"><a href="/all.html?tags=[health]" class="nav-link">Health</a></li>
             <li class="nav-item"><a href="/all.html?tags=[finance]" class="nav-link">Finance</a></li>
             <li class="nav-item"><a href="/all.html?tags=[travel]" class="nav-link">Travel</a></li>
             <li class="nav-item"><a href="/all.html?tags=[tech]" class="nav-link">Tech</a></li>
-            <li class="nav-item"><a href="/all.html" class="nav-link">All</a></li>
+            <li class="nav-item"><a href="/all.html?tags=[education]" class="nav-link">Education</a></li>
+
           </ul>
         </div>
       </div>
@@ -115,24 +116,10 @@
             }
 
             // Now you can access the query parameters as properties of the params object
-            console.log(params)
 
             return params[type]
         }
 
-        function parseStrArrToArr(strArr) {
-            var arrayString = strArr.replace("[", "")
-            
-            // Split the remaining string into an array using comma as the delimiter
-            var myArray = arrayString.split(",");
-
-            // Remove leading/trailing spaces and single quotes from each array element
-            myArray = myArray.map(function(element) {
-              return element.trim().replace(/'/g, '');
-            });
-
-            return myArray
-        }
 
         function createArticle(_id, title, text, tags=[]) {
 
@@ -216,22 +203,42 @@
         // for local development: use http://
         const host = (hostname === 'localhost') ? `http://localhost:${port}` : `https://${hostname}:${port}`
 
-//         let tags = getParams('tags')
+        let search = getParams('search')
+        let tags = getParams('tags')
 
-//        tags = parseStrArrToArr(tags)
-//
-//        tags.forEach(tag => {
-//          console.log(tag)
-//        })
 
-        fetch(`${host}/articles?$limit=50`)
-        .then(response => response.json())
-        .then(resp => {
-            resp.data.forEach(article => {
-                let res = createArticle(article._id, article.title, article.text, article.tags)
-                document.querySelector('#content-row').appendChild(res)
-            });
-        });
+        if (tags) {
+          tags = tags.replace('[','').replace(']','')
+
+          tags = tags.split(',')
+
+          //http://localhost:3030/articles?$limit=50&tags[$in][]=travel&tags[$in][]=education
+
+          let tagsQuery = ''
+
+          tags.forEach(tag => {
+            tagsQuery += `&tags[$in][]=${tag}`
+          })
+
+
+          fetch(`${host}/articles?$limit=50${tagsQuery}`)
+          .then(response => response.json())
+          .then(resp => {
+              resp.data.forEach(article => {
+                  let res = createArticle(article._id, article.title, article.text, article.tags)
+                  document.querySelector('#content-row').appendChild(res)
+              });
+          });
+        }
+
+        if (search) {
+          console.log(search)
+
+          // text: { $regex: 'feathersjs', $options: 'igm' },
+
+
+        }
+
     </script>
 
 
