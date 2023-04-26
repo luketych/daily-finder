@@ -164,10 +164,6 @@
 
             let randImgIdx = randomIntArr[placeholderImageIdx]
 
-            console.log("placeholderImageIdx", placeholderImageIdx)
-
-            console.log("randImgIdx", randImgIdx)
-
             link.style.backgroundImage = `url('./assets/images/image_${randImgIdx}.jpg')`;
             placeholderImageIdx += 1
             if (placeholderImageIdx >= NUM_RAND_IMGS) {
@@ -211,7 +207,7 @@
         }
 
         let placeholderImageIdx = 0
-        const randomIntArr = generateUniqueRandArray(NUM_RAND_IMGS)
+        const randomIntArr = generateUniqueRandArray(NUM_RAND_IMGS-1)
 
 
         const hostname = window.location.hostname
