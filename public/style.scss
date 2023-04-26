@@ -512,7 +512,7 @@ h1, h2, h3, h4, h5,
 
 
 .bg-light {
-	background: #f8faff!important;
+	background: white!important;
 	z-index: 0;
 }
 
@@ -1044,11 +1044,17 @@ textarea.form-control {
 
 
 .ftco-section {
-	padding: 8em 0;
-	position: relative;
-	@include media-breakpoint-down(sm){
-		padding: 6em 0;
-	}
+  padding: 8em 0;
+  position: relative;
+	// @include media-breakpoint-down(sm){
+	// 	padding: 6em 0;
+	// }
+}
+
+@media (max-width: 991.98px) {
+  .ftco-section {
+    padding: 0;
+  }
 }
 
 .ftco-bg-dark {
@@ -2038,7 +2044,7 @@ textarea.form-control {
 	}
 }
 
-/* Blog*/
+/* article-entry*/
 .post-info {
 	font-size: 12px;
 	text-transform: uppercase;

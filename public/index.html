@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Daily Finder</title>
+    <title>DailyFinder</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
@@ -33,19 +33,19 @@
       <div class="container">
         <img class="logo" src="assets/images/logo.png" />
         <span class="horizontal-spacer" style="width:2em;"></span>
-        <a class="navbar-brand" href="/index.html">Daily Finder</a>
+        <a class="navbar-brand" href="/index.html">DailyFinder</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="oi oi-menu"></span> Menu
         </button>
 
         <div class="collapse navbar-collapse" id="ftco-nav">
           <ul class="navbar-nav ml-auto">
-            <li class="nav-item active"><a href="/index.html" class="nav-link">Home</a></li>
-            <li class="nav-item active"><a href="/blog.html?tags=[health-and-wellness]" class="nav-link">Health & Wellness</a></li>
-            <li class="nav-item"><a href="/blog.html?tags=[finance]" class="nav-link">Finance</a></li>
-            <li class="nav-item"><a href="/blog.html?tags=[travel]" class="nav-link">Travel</a></li>
-            <li class="nav-item"><a href="/blog.html?tags=[tech]" class="nav-link">Tech</a></li>
-            <li class="nav-item"><a href="/blog.html" class="nav-link">Blog</a></li>
+            
+            <li class="nav-item active"><a href="/all.html?tags=[health-and-wellness]" class="nav-link">Health</a></li>
+            <li class="nav-item"><a href="/all.html?tags=[finance]" class="nav-link">Finance</a></li>
+            <li class="nav-item"><a href="/all.html?tags=[travel]" class="nav-link">Travel</a></li>
+            <li class="nav-item"><a href="/all.html?tags=[tech]" class="nav-link">Tech</a></li>
+            <li class="nav-item"><a href="/all.html" class="nav-link">All</a></li>
           </ul>
         </div>
       </div>
@@ -62,6 +62,7 @@
 
           <div class="one-forth pr-md-4 ftco-animate align-self-md-center" data-scrollax=" properties: { translateY: '70%' }">
           	<h1 class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Find Anything</h1>
+            <input type="text" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="basic-addon1">
             <!-- <p class="mb-md-5 mb-sm-3" data-scrollax="properties: { translateY: '30%', opacity: 1 }">On any topic.</p> -->
             <!-- <p data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><a href="#email-sub" class="btn btn-primary px-4 py-3">TAKE A SHOT 🚀</a></p> -->
           </div>
@@ -97,8 +98,8 @@
         </div>
         <div class="row">
           <div class="col-md-4 ftco-animate">
-            <div class="blog-entry">
-              <a href="blog-single.html" class="block-20" style="background-image: url('assets/images/image_1.jpg');">
+            <div class="article-entry">
+              <a href="article.html" class="block-20" style="background-image: url('assets/images/image_1.jpg');">
               </a>
               <div class="text p-4 d-block">
                 <div class="meta mb-3">
@@ -111,8 +112,8 @@
             </div>
           </div>
           <div class="col-md-4 ftco-animate">
-            <div class="blog-entry" data-aos-delay="100">
-              <a href="blog-single.html" class="block-20" style="background-image: url('assets/images/image_2.jpg');">
+            <div class="article-entry" data-aos-delay="100">
+              <a href="article.html" class="block-20" style="background-image: url('assets/images/image_2.jpg');">
               </a>
               <div class="text p-4">
                 <div class="meta mb-3">
@@ -125,8 +126,8 @@
             </div>
           </div>
           <div class="col-md-4 ftco-animate">
-            <div class="blog-entry" data-aos-delay="200">
-              <a href="blog-single.html" class="block-20" style="background-image: url('assets/images/image_3.jpg');">
+            <div class="article-entry" data-aos-delay="200">
+              <a href="article.html" class="block-20" style="background-image: url('assets/images/image_3.jpg');">
               </a>
               <div class="text p-4">
                 <div class="meta mb-3">
@@ -155,7 +156,7 @@
             <div class="media block-6 services d-block text-center">
               <div class="d-flex justify-content-center"><div class="icon"><span class="flaticon-health"></span></div></div>
               <div class="media-body p-2 mt-3">
-                <h3 class="heading">Health & Wellness</h3>
+                <h3 class="heading">Health</h3>
                 <p>Even all the money in the world won't matter if you don't take care of yourself first.</p>
               </div>
             </div>      
@@ -212,7 +213,7 @@
                   <div class="user-img mb-5" style="background-image: url(assets/images/health-logo.png)">
                   </div>
                   <div class="text">
-                    <p class="mb-5">Wide ranging topics related to overall health & wellness. Fitness, mental health, nutrition, disease prevention, etc. Providing a holistic approach to health & wellness.</p>
+                    <p class="mb-5">Wide ranging topics related to overall health. Fitness, mental health, nutrition, disease prevention, etc. Providing a holistic approach to health.</p>
                     <p class="name">Health</p>
                   </div>
                 </div>
@@ -264,7 +265,7 @@
     		<div class="row">
           <div class="col-md-12 nav-link-wrap mb-5 pb-md-5 pb-sm-1 ftco-animate">
             <div class="nav ftco-animate nav-pills justify-content-center text-center" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-              <a class="nav-link active" id="v-pills-nextgen-tab" data-toggle="pill" href="#v-pills-nextgen" role="tab" aria-controls="v-pills-nextgen" aria-selected="true">Health & Wellness</a>
+              <a class="nav-link active" id="v-pills-nextgen-tab" data-toggle="pill" href="#v-pills-nextgen" role="tab" aria-controls="v-pills-nextgen" aria-selected="true">Health</a>
 
               <a class="nav-link" id="v-pills-performance-tab" data-toggle="pill" href="#v-pills-performance" role="tab" aria-controls="v-pills-performance" aria-selected="false">Finance</a>
 
@@ -281,9 +282,9 @@
 	              		<img src="assets/images/health-and-wellness.jpg" class="img-fluid border" alt="">
 	              	</div>
 	              	<div class="one-half ml-md-5 align-self-center">
-		                <h2 class="mb-4">Health and Wellness</h2>
+		                <h2 class="mb-4">Health</h2>
 		              	<p>Our platform is dedicated to sharing informative and insightful articles on various topics related to health, wellness, and fitness. We aim to provide our readers with helpful tips, advice, and strategies that can help them lead a healthier and more fulfilling life. </p>
-		                <p>From workout routines and healthy recipes to mindfulness and self-care, our blog covers a wide range of topics to help you achieve your health and wellness goals. Whether you are a fitness enthusiast or just starting your journey, our blog is here to provide you with valuable information and inspiration to help you live your best life.</p>
+		                <p>From workout routines and healthy recipes to mindfulness and self-care, our site covers a wide range of topics to help you achieve your health goals. Whether you are a fitness enthusiast or just starting your journey, our blog is here to provide you with valuable information and inspiration to help you live your best life.</p>
 		              </div>
 	              </div>
               </div>
@@ -296,7 +297,7 @@
 	              	<div class="one-half order-first mr-md-5 align-self-center">
 		                <h2 class="mb-4">Finance</h2>
 		              	<p>Our platform is dedicated to sharing informative and valuable articles on various topics related to personal finance, investing, and money management. We aim to provide our readers with helpful tips, insights, and strategies that can help them achieve their financial goals and build long-term wealth. </p>
-		                <p>Whether you are a seasoned investor or just starting out, our blog is here to provide you with practical advice and actionable steps to take control of your finances and secure a better financial future.</p>
+		                <p>Whether you are a seasoned investor or just starting out, our site is here to provide you with practical advice and actionable steps to take control of your finances and secure a better financial future.</p>
 		              </div>
 	              </div>
               </div>
@@ -347,7 +348,7 @@
         <div class="row mb-5">
           <div class="col-md">
             <div class="ftco-footer-widget mb-4">
-              <h2 class="ftco-heading-2">Daily Finder ™</h2>
+              <h2 class="ftco-heading-2">DailyFinder </h2>
               <p>Find anything any time.</p>
               <br>
               <p class="mt-4"><a href="/contact.html" class="btn btn-primary p-3">Get in touch</a></p>
@@ -388,6 +389,35 @@
 
   <!-- loader -->
   <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+
+
+
+
+  <script type="text/javascript">
+
+      const hostname = window.location.hostname
+      const port = window.location.port
+
+      // for local development: use http://
+      const host = (hostname === 'localhost') ? `http://localhost:${port}` : `https://${hostname}:${port}`
+
+      // Get the search input element
+      const searchInput = document.querySelector('.form-control');
+
+      // Listen for the "keydown" event on the search input
+      searchInput.addEventListener('keydown', function(event) {
+        // Check if the pressed key is "Enter"
+        if (event.key === 'Enter') {
+          // Get the search query
+          const query = searchInput.value;
+
+          // Redirect to the search results page with the query parameter
+          window.location.href = `${host}/all.html?query=${encodeURIComponent(query)}`;
+        }
+      });
+  </script>
+
+
 
 
   <script src="assets/js/jquery.min.js"></script>
