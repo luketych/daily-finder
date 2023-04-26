@@ -8160,6 +8160,7 @@ textarea.form-control {
 
 .ftco-footer {
   font-size: 16px;
+  padding-top: 1em;
   
   /* background: #24bdc9;* /
   /* padding: 12em 0 8em 0; */
@@ -8907,7 +8908,7 @@ textarea.form-control {
   .custom-pagination .next {
     float: right; }
 
-/* Blog*/
+/* article-entry*/
 .post-info {
   font-size: 12px;
   text-transform: uppercase;

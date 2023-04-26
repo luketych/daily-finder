@@ -1264,7 +1264,7 @@ textarea.form-control {
 
 //COVER BG
 .img,
-.blog-img,
+.article-img,
 .user-img{
 	background-size: cover;
 	background-repeat: no-repeat;
@@ -1494,7 +1494,7 @@ textarea.form-control {
 	position: relative;
 	display: block;
 }
-.blog-entry{
+.article-entry{
 	background: $white;
 	-webkit-box-shadow: 0px 4px 18px -12px rgba(0,0,0,0.75);
 	-moz-box-shadow: 0px 4px 18px -12px rgba(0,0,0,0.75);
@@ -1965,7 +1965,7 @@ textarea.form-control {
 
 //### .block-21
 .block-21 {
-	.blog-img{
+	.article-img{
 		display: block;
 		height: 80px;
 		width: 80px;

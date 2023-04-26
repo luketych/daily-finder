@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Daily Finder</title>
+    <title>DailyFinder</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
@@ -35,19 +35,19 @@
     <div class="container">
       <!-- <img class="logo" src="./images/daily-finder-logo2.png" />
       <span class="horizontal-spacer" style="width:2em;"></span> -->
-      <a class="navbar-brand" href="/index.html">Daily Finder</a>
+      <a class="navbar-brand" href="/index.html">DailyFinder</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="oi oi-menu"></span> Menu
       </button>
 
       <div class="collapse navbar-collapse" id="ftco-nav">
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item active"><a href="/index.html" class="nav-link">Home</a></li>
-          <li class="nav-item active"><a href="/blog.html?tags=[health-and-wellness]" class="nav-link">Health & Wellness</a></li>
-          <li class="nav-item"><a href="/blog.html?tags=[finance]" class="nav-link">Finance</a></li>
-          <li class="nav-item"><a href="/blog.html?tags=[travel]" class="nav-link">Travel</a></li>
-          <li class="nav-item"><a href="/blog.html?tags=[tech]" class="nav-link">Tech</a></li>
-          <li class="nav-item"><a href="/blog.html" class="nav-link">Blog</a></li>
+          
+          <li class="nav-item active"><a href="/all.html?tags=[health-and-wellness]" class="nav-link">Health</a></li>
+          <li class="nav-item"><a href="/all.html?tags=[finance]" class="nav-link">Finance</a></li>
+          <li class="nav-item"><a href="/all.html?tags=[travel]" class="nav-link">Travel</a></li>
+          <li class="nav-item"><a href="/all.html?tags=[tech]" class="nav-link">Tech</a></li>
+          <li class="nav-item"><a href="/all.html" class="nav-link">All</a></li>
         </ul>
       </div>
     </div>
@@ -72,8 +72,8 @@
 
     <section class="ftco-section bg-light">
       <div class="container">
-        <h2 id="blog-title"></h2>
-        <p class="blog-paragraph"></p>
+        <h2 id="article-title"></h2>
+        <p class="article-paragraph"></p>
       </div>
     </section>
 
@@ -90,17 +90,17 @@
         fetch(`https://${hostname}:${port}/articles/${_id}`)
           .then(response => response.json())
           .then(data => {
-            // get blog title
-            const blogTitle = document.getElementById('blog-title');
-            // get blog paragraph
-            const blogParagraph = document.getElementsByClassName('blog-paragraph');
+            // get article title
+            const articleTitle = document.getElementById('article-title');
+            // get article paragraph
+            const articleParagraph = document.getElementsByClassName('article-paragraph');
 
             console.log(data)
 
-            // set blog title
-            blogTitle.innerHTML = data.title;
-            // set blog paragraph
-            blogParagraph[0].innerHTML = data.text;
+            // set article title
+            articleTitle.innerHTML = data.title;
+            // set article paragraph
+            articleParagraph[0].innerHTML = data.text;
           });        
 
     </script>
@@ -111,7 +111,7 @@
         <div class="row mb-5">
           <div class="col-md">
             <div class="ftco-footer-widget mb-4">
-              <h2 class="ftco-heading-2">Daily Finder ™</h2>
+              <h2 class="ftco-heading-2">DailyFinder </h2>
               <p>Find anything any time.</p>
               <br>
               <p class="mt-4"><a href="/contact.html" class="btn btn-primary p-3">Get in touch</a></p>

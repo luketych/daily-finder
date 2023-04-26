@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Daily Finder</title>
+    <title>DailyFinder</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
@@ -35,19 +35,19 @@
       <div class="container">
         <!-- <img class="logo" src="./images/daily-finder-logo2.png" />
         <span class="horizontal-spacer" style="width:2em;"></span> -->
-        <a class="navbar-brand" href="/index.html">Daily Finder</a>
+        <a class="navbar-brand" href="/index.html">DailyFinder</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="oi oi-menu"></span> Menu
         </button>
 
         <div class="collapse navbar-collapse" id="ftco-nav">
           <ul class="navbar-nav ml-auto">
-            <li class="nav-item active"><a href="/index.html" class="nav-link">Home</a></li>
-            <li class="nav-item active"><a href="/blog.html?tags=[health-and-wellness]" class="nav-link">Health & Wellness</a></li>
-            <li class="nav-item"><a href="/blog.html?tags=[finance]" class="nav-link">Finance</a></li>
-            <li class="nav-item"><a href="/blog.html?tags=[travel]" class="nav-link">Travel</a></li>
-            <li class="nav-item"><a href="/blog.html?tags=[tech]" class="nav-link">Tech</a></li>
-            <li class="nav-item"><a href="/blog.html" class="nav-link">Blog</a></li>
+            
+            <li class="nav-item active"><a href="/all.html?tags=[health-and-wellness]" class="nav-link">Health</a></li>
+            <li class="nav-item"><a href="/all.html?tags=[finance]" class="nav-link">Finance</a></li>
+            <li class="nav-item"><a href="/all.html?tags=[travel]" class="nav-link">Travel</a></li>
+            <li class="nav-item"><a href="/all.html?tags=[tech]" class="nav-link">Tech</a></li>
+            <li class="nav-item"><a href="/all.html" class="nav-link">All</a></li>
           </ul>
         </div>
       </div>
@@ -62,7 +62,7 @@
       <div class="container-fluid">
         <div class="row no-gutters d-flex slider-text align-items-center justify-content-center" data-scrollax-parent="true">
           <div class="col-md-6 ftco-animate text-center" data-scrollax=" properties: { translateY: '70%' }">
-            <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Blog</h1>
+            <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">All</h1>
           </div>
         </div>
       </div>
@@ -133,23 +133,23 @@
             return myArray
         }
 
-        function createBlogEntry(_id, title, text, tags=[]) {
+        function createArticle(_id, title, text, tags=[]) {
 
-          const blogEntry = document.createElement('div');
-          blogEntry.className = 'col-md-4 ftco-animate fadeInUp ftco-animated'; // @todo: I hardcoded in dateInUp and ftco-animated. It was stopping the image from showing.
+          const article = document.createElement('div');
+          article.className = 'col-md-4 ftco-animate fadeInUp ftco-animated'; // @todo: I hardcoded in dateInUp and ftco-animated. It was stopping the image from showing.
 
-          const blogEntryInner = document.createElement('div');
-          blogEntryInner.className = 'blog-entry';
-          blogEntryInner.setAttribute('data-aos-delay', '500');
+          const articleInner = document.createElement('div');
+          articleInner.className = 'article-entry';
+          articleInner.setAttribute('data-aos-delay', '500');
 
 
           const link = document.createElement('a');
-          link.href = `blog/index.html?_id=${_id}`;
+          link.href = `all/index.html?_id=${_id}`;
           link.className = 'block-20';
-          //link.style.backgroundImage = `url('./blog/images/${_id}.jpg')`;
+          //link.style.backgroundImage = `url('./article-entry/images/${_id}.jpg')`;
 
           var img = new Image();
-          img.src = `./blog/images/${_id}.jpg`;
+          img.src = `./all/images/${_id}.jpg`;
 
           img.addEventListener('load', function() {
             link.style.backgroundImage = `url('${img.src}')`;
@@ -183,24 +183,24 @@
           const heading = document.createElement('h3');
           heading.className = 'heading';
           const headingAnchor = document.createElement('a');
-          headingAnchor.href = `blog/index.html?_id=${_id}`;
+          headingAnchor.href = `all/index.html?_id=${_id}`;
           headingAnchor.textContent = title;
           heading.appendChild(headingAnchor);
 
           const readMoreLink = document.createElement('a');
-          readMoreLink.href = `blog/index.html?_id=${_id}`;
+          readMoreLink.href = `all/index.html?_id=${_id}`;
           readMoreLink.textContent = 'Read More';
 
           textInner.appendChild(tagList);
           textInner.appendChild(heading);
           textInner.appendChild(readMoreLink);
 
-          blogEntryInner.appendChild(link);
-          blogEntryInner.appendChild(textInner);
+          articleInner.appendChild(link);
+          articleInner.appendChild(textInner);
 
-          blogEntry.appendChild(blogEntryInner);
+          article.appendChild(articleInner);
 
-          return blogEntry
+          return article
         }
 
 
@@ -222,7 +222,7 @@
         .then(response => response.json())
         .then(resp => {
             resp.data.forEach(article => {
-                let res = createBlogEntry(article._id, article.title, article.text, article.tags)
+                let res = createArticle(article._id, article.title, article.text, article.tags)
                 document.querySelector('#content-row').appendChild(res)
             });
         });
@@ -234,7 +234,7 @@
         <div class="row mb-5">
           <div class="col-md">
             <div class="ftco-footer-widget mb-4">
-              <h2 class="ftco-heading-2">Daily Finder ™</h2>
+              <h2 class="ftco-heading-2">DailyFinder </h2>
               <p>Find anything any time.</p>
               <br>
               <p class="mt-4"><a href="/contact.html" class="btn btn-primary p-3">Get in touch</a></p>
