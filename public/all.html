@@ -165,7 +165,7 @@
           tagList.className = 'tags';
           tags.forEach(tag => {
             const tagLink = document.createElement('a');
-            tagLink.href = '#';
+            tagLink.href = 'all/index.html?_id=${_id}';
             tagLink.textContent = tag;
             tagList.appendChild(tagLink);
           });
