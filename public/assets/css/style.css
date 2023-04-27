@@ -7500,7 +7500,10 @@ h1, h2, h3, h4, h5,
     background-repeat: no-repeat;
     background-size: cover;
 
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2ebdc4', endColorstr='#68e5b2', GradientType=1 ); }
+    display:none;
+
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2ebdc4', endColorstr='#68e5b2', GradientType=1 ); 
+  }
   .hero-wrap .circle-bg:after {
     position: absolute;
     top: 40%;
