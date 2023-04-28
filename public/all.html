@@ -121,6 +121,14 @@
             return params[type]
         }
 
+        function shuffleArray(array) {
+          for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+          }
+          return array;
+        }
+
 
         function createArticle(_id, title, text, tags=[]) {
 
@@ -234,7 +242,21 @@
                 return dateB - dateA;
               });
 
-              sortedArticles.forEach(article => {
+              // Filter out articles that don't have a createdAt date
+              const articlesWithoutCreatedAt = [];
+              for (let i = sortedArticles.length - 1; i >= 0; i--) {
+                if (!sortedArticles[i].createdAt) {
+                  // Add the article to the filtered array and remove it from sortedArticles
+                  articlesWithoutCreatedAt.push(sortedArticles[i]);
+                  sortedArticles.splice(i, 1);
+                }
+              }
+
+              const shuffledArray = shuffleArray(articlesWithoutCreatedAt)
+
+              const finalArray = sortedArticles.concat(shuffledArray)
+
+              finalArray.forEach(article => {
                   let res = createArticle(article._id, article.title, article.text, article.tags)
                   document.querySelector('#content-row').appendChild(res)
               });
