@@ -225,7 +225,16 @@
           fetch(`${host}/articles?$limit=50${tagsQuery}`)
           .then(response => response.json())
           .then(resp => {
-              resp.data.forEach(article => {
+              const articles = resp.data
+
+              // sort by createdAt. If createdAt is not defined, use 0 so it will be at the back of the array.
+              const sortedArticles = articles.sort((a, b) => {
+                const dateA = new Date(a.createdAt || 0);
+                const dateB = new Date(b.createdAt || 0);
+                return dateB - dateA;
+              });
+
+              sortedArticles.forEach(article => {
                   let res = createArticle(article._id, article.title, article.text, article.tags)
                   document.querySelector('#content-row').appendChild(res)
               });

@@ -45,11 +45,22 @@ export const articles = (app) => {
       get: [],
       create: [
         schemaHooks.validateData(articlesDataValidator),
-        schemaHooks.resolveData(articlesDataResolver)
+        schemaHooks.resolveData(articlesDataResolver),
+        async ctx => {
+          ctx.data[0].createdAt = new Date().toISOString()
+          ctx.data[0].updatedAt = new Date().toISOString()
+
+          return ctx
+        }
       ],
       patch: [
         schemaHooks.validateData(articlesPatchValidator),
-        schemaHooks.resolveData(articlesPatchResolver)
+        schemaHooks.resolveData(articlesPatchResolver),
+        async ctx => {
+          ctx.data[0].updatedAt = new Date().toISOString()
+
+          return ctx
+        }
       ],
       remove: []
     },

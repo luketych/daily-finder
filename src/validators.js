@@ -5,6 +5,7 @@ import { Ajv, addFormats } from '@feathersjs/schema'
 
 const formats = [
   'date-time',
+  'iso-date-time',
   'time',
   'date',
   'email',
