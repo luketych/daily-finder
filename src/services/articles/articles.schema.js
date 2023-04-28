@@ -10,9 +10,13 @@ export const articlesSchema = Type.Object(
     _id: ObjectIdSchema(),
     tags: Type.Array(Type.String()),
     title: Type.String(),
-    text: Type.String()
+    text: Type.String(),
+
+    // default and format doesn't work
+    createdAt: Type.String({ default: () => new Date().toISOString(), /* format: 'iso-date-time' */ }),
+    updatedAt: Type.String({ default: () => new Date().toISOString(), /* format: 'iso-date-time' */ })
   },
-  { $id: 'Articles', additionalProperties: false }
+  { $id: 'Articles', additionalProperties: true }
 )
 export const articlesValidator = getValidator(articlesSchema, dataValidator)
 export const articlesResolver = resolve({})
@@ -34,14 +38,14 @@ export const articlesPatchValidator = getValidator(articlesPatchSchema, dataVali
 export const articlesPatchResolver = resolve({})
 
 // Schema for allowed query properties
-export const articlesQueryProperties = Type.Pick(articlesSchema, ['_id', 'tags','title','text'])
+export const articlesQueryProperties = Type.Pick(articlesSchema, ['_id', 'tags','title','text', '$sort'])
 export const articlesQuerySchema = Type.Intersect(
   [
     querySyntax(articlesQueryProperties),
     // Add additional query properties here
-    Type.Object({}, { additionalProperties: false })
+    Type.Object({}, { additionalProperties: true })
   ],
-  { additionalProperties: false }
+  { additionalProperties: true }
 )
 export const articlesQueryValidator = getValidator(articlesQuerySchema, queryValidator)
 export const articlesQueryResolver = resolve({})
