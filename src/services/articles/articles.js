@@ -57,7 +57,7 @@ export const articles = (app) => {
         schemaHooks.validateData(articlesPatchValidator),
         schemaHooks.resolveData(articlesPatchResolver),
         async ctx => {
-          ctx.data[0].updatedAt = new Date().toISOString()
+          ctx.data.updatedAt = new Date().toISOString()
 
           return ctx
         }

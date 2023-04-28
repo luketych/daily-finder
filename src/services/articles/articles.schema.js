@@ -38,7 +38,7 @@ export const articlesPatchValidator = getValidator(articlesPatchSchema, dataVali
 export const articlesPatchResolver = resolve({})
 
 // Schema for allowed query properties
-export const articlesQueryProperties = Type.Pick(articlesSchema, ['_id', 'tags','title','text', '$sort'])
+export const articlesQueryProperties = Type.Pick(articlesSchema, ['_id', 'tags','title','text'])
 export const articlesQuerySchema = Type.Intersect(
   [
     querySyntax(articlesQueryProperties),
