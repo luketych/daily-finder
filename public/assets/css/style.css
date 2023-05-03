@@ -9222,9 +9222,19 @@ textarea.form-control {
   font-weight: 600;
 }
 
-@media (min-width: 768px) {
+
+@media (max-width: 767.98px) {
+  .article.container {
+    padding-top: 2em;
+    padding-bottom: 4em;
+  }
+}
+@media (min-width: 767.98px) {
   .article.container {
     width: 50%;
+
+    padding-top: 4em;
+    padding-bottom: 6em;
   }
 }
 
