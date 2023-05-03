@@ -153,6 +153,9 @@
           console.log(img.src)
 
           img.addEventListener('load', function() {
+            // If the image loads successfully, set it as the background image
+            console.log("SUCCESS", img.src)
+
             link.style.backgroundImage = `url('${img.src}')`;
           });
 
@@ -162,7 +165,7 @@
           img.addEventListener('error', function() {
             // If the image fails to load, set a default background image
 
-            console.log("ERROR")
+            console.log("ERROR", img.src)
 
             let randImgIdx = randomIntArr[placeholderImageIdx]
 
