@@ -9229,8 +9229,10 @@ textarea.form-control {
   font-weight: 600;
 }
 
-.article.container {
-  width: 50%;
+@media (max-width: 767.98px) {
+  .article.container {
+    width: 50%;
+  }
 }
 
 
