@@ -7,7 +7,7 @@
   ],
   "paginate": {
     "default": 100,
-    "max": 50
+    "max": 500
   },
   "mongodb": "mongodb://127.0.0.1:27017/daily-finder"
 }
