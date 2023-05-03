@@ -9223,9 +9223,13 @@ textarea.form-control {
 }
 
 
+.article.container {
+  padding: 1em;
+}
+
 @media (max-width: 767.98px) {
   .article.container {
-    padding-top: 2em;
+    padding-top: 1em;
     padding-bottom: 4em;
   }
 }
