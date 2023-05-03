@@ -145,8 +145,12 @@
           link.className = 'block-20';
           //link.style.backgroundImage = `url('./article-entry/images/${_id}.jpg')`;
 
+          // http://localhost:3030/assets/images/article-images/644b2f8f09ad0989546321fe.jpg
+
           var img = new Image();
-          img.src = `./all/images/${_id}.jpg`;
+          img.src = `./assets/images/article-images/${_id}.jpg`;
+
+          console.log(img.src)
 
           img.addEventListener('load', function() {
             link.style.backgroundImage = `url('${img.src}')`;
@@ -157,6 +161,8 @@
           // Add an event listener to check when the image fails to load
           img.addEventListener('error', function() {
             // If the image fails to load, set a default background image
+
+            console.log("ERROR")
 
             let randImgIdx = randomIntArr[placeholderImageIdx]
 
