@@ -49,6 +49,7 @@
     "@feathersjs/socketio": "^5.0.1",
     "@feathersjs/transport-commons": "^5.0.1",
     "@feathersjs/typebox": "^5.0.1",
+    "@koa/cors": "^4.0.0",
     "mongodb": "^5.1.0",
     "winston": "latest"
   },

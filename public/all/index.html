@@ -71,6 +71,7 @@
 
     <section class="ftco-section bg-light">
       <div class="article container">
+        <img id="article-image" src="" alt="article image" class="img-fluid">
         <h2 id="article-title"></h2>
         <p class="article-paragraph"></p>
       </div>
@@ -104,9 +105,11 @@
             const {data} = resp
             const article = data[0]
 
+            const articleImage = document.getElementById('article-image');
             const articleTitle = document.getElementById('article-title');
             const articleParagraph = document.getElementsByClassName('article-paragraph');
 
+            articleImage.src = `${_id}.jpg`;
             articleTitle.innerHTML = article.title;
             articleParagraph[0].innerHTML = article.text;
           });        

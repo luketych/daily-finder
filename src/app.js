@@ -4,6 +4,8 @@ import configuration from '@feathersjs/configuration'
 import { koa, rest, bodyParser, errorHandler, parseAuthentication, cors, serveStatic } from '@feathersjs/koa'
 import socketio from '@feathersjs/socketio'
 
+import corss from '@koa/cors'; 
+
 import { configurationValidator } from './configuration.js'
 import { logError } from './hooks/log-error.js'
 import { mongodb } from './mongodb.js'
@@ -27,9 +29,7 @@ app.use(bodyParser())
 app.configure(rest())
 app.configure(
   socketio({
-    cors: {
-      origin: app.get('origins')
-    }
+    cors // : { origin: app.get('cors_origins') }
   })
 )
 app.configure(channels)

@@ -238,10 +238,27 @@
             tagsQuery += `&tags[$in][]=${tag}`
           })
 
+          const fetchURL = `https://dailyfinder.org/articles?$limit=50${tagsQuery})`
+          console.log('fetching: ', fetchURL)
 
-          fetch(`${host}/articles?$limit=50${tagsQuery}`)
-          .then(response => response.json())
+          fetch(fetchURL)
+          //fetch(`${host}/articles?$limit=50${tagsQuery}`)
+          .catch(err => {
+            console.log('Error fetching articles: ', err)
+          })
+          .then(response => {
+             console.log('Response Status:', response.status);
+            console.log('Response Headers:', response.headers);
+
+            if (!response.ok) {
+              throw new Error(`HTTP error! status: ${response.status}`);
+            } 
+            
+            console.log(response)
+            return response.json()
+          })
           .then(resp => {
+              console.log('resp: ', resp)
               const articles = resp.data
 
               // sort by createdAt. If createdAt is not defined, use 0 so it will be at the back of the array.
