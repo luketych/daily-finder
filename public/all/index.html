@@ -109,9 +109,16 @@
             const articleTitle = document.getElementById('article-title');
             const articleParagraph = document.getElementsByClassName('article-paragraph');
 
+            // Add an event listener to check when the image fails to load
+            articleImage.addEventListener('error', function() {
+              console.log('error loading image')
+              this.style.display = 'none';
+            });
+
             articleImage.src = `/assets/images/article-images/${_id}.jpg`; 
             articleTitle.innerHTML = article.title;
             articleParagraph[0].innerHTML = article.text;
+            
           });        
 
     </script>
