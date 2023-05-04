@@ -109,7 +109,7 @@
             const articleTitle = document.getElementById('article-title');
             const articleParagraph = document.getElementsByClassName('article-paragraph');
 
-            articleImage.src = `${_id}.jpg`;
+            articleImage.src = `/assets/images/article-images/${_id}.jpg`; 
             articleTitle.innerHTML = article.title;
             articleParagraph[0].innerHTML = article.text;
           });        
