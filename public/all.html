@@ -238,7 +238,7 @@
             tagsQuery += `&tags[$in][]=${tag}`
           })
 
-          const fetchURL = `https://dailyfinder.org/articles?$limit=50${tagsQuery})`
+          const fetchURL = `https://dailyfinder.org/articles?$limit=50${tagsQuery}`
           console.log('fetching: ', fetchURL)
 
           fetch(fetchURL)
@@ -253,7 +253,7 @@
             if (!response.ok) {
               throw new Error(`HTTP error! status: ${response.status}`);
             } 
-            
+
             console.log(response)
             return response.json()
           })
