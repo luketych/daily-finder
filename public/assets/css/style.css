@@ -9242,6 +9242,9 @@ textarea.form-control {
   }
 }
 
+#article-image {
+  display: none;
+}
 
 .spacer {
   height: 1em;

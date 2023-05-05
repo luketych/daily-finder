@@ -117,6 +117,11 @@
               this.style.display = 'none';
             });
 
+            articleImage.addEventListener('load', function() {
+              console.log('image loaded')
+              this.style.display = 'block';
+            });
+
             articleImage.src = `/assets/images/article-images/${_id}.jpg`; 
             articleTitle.innerHTML = article.title;
             articleParagraph[0].innerHTML = article.text;
