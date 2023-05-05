@@ -79,57 +79,6 @@
       </div>
     </section>
 
-    <script type="text/javascript" async="async">
-        // Get the current URL
-        const urlParams = new URLSearchParams(window.location.search);
-
-        const _id = urlParams.get('_id');
-
-
-        const host = window.location.host
-        const hostname = window.location.hostname
-        const href = window.location.href
-        const origin = window.location.origin
-        const pathname = window.location.pathname
-        const port = window.location.port
-        const protocol = window.location.protocol
-
-        const urlWithoutPath = `${protocol}//${hostname}${port ? ':' + port : ''}`
-
-
-        // for local development: use http://
-        let _host = (hostname === 'localhost') ? `http://localhost:${port}` : `https://${hostname}:${port}`
-
-
-        fetch(`${_host}/articles?_id=${_id}`)
-          .then(response => response.json())
-          .then(resp => {
-            const {data} = resp
-            const article = data[0]
-
-            const articleImage = document.getElementById('article-image');
-            const articleTitle = document.getElementById('article-title');
-            const articleParagraph = document.getElementsByClassName('article-paragraph');
-
-            // Add an event listener to check when the image fails to load
-            articleImage.addEventListener('error', function() {
-              console.log('error loading image')
-              this.style.display = 'none';
-            });
-
-            articleImage.addEventListener('load', function() {
-              console.log('image loaded')
-              this.style.display = 'block';
-            });
-
-            articleImage.src = `/assets/images/article-images/${_id}.jpg`; 
-            articleTitle.innerHTML = article.title;
-            articleParagraph[0].innerHTML = article.text;
-            
-          });        
-
-    </script>
-
 
     <footer class="ftco-footer ftco-bg-dark ftco-section">
       <div class="container">
@@ -204,5 +153,67 @@
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
 
+
+
+  <script type="text/javascript" async="async">
+      // Get the current URL
+      const urlParams = new URLSearchParams(window.location.search);
+
+      const _id = urlParams.get('_id');
+
+
+      const host = window.location.host
+      const hostname = window.location.hostname
+      const href = window.location.href
+      const origin = window.location.origin
+      const pathname = window.location.pathname
+      const port = window.location.port
+      const protocol = window.location.protocol
+
+      const urlWithoutPath = `${protocol}//${hostname}${port ? ':' + port : ''}`
+
+
+      // for local development: use http://
+      let _host = (hostname === 'localhost') ? `http://localhost:${port}` : `https://${hostname}:${port}`
+
+
+      const footer = document.getElementsByTagName('footer')[0]
+      
+      footer.style.visibility = 'hidden'
+
+      fetch(`${_host}/articles?_id=${_id}`)
+        .then(response => response.json())
+        .then(resp => {
+          const {data} = resp
+          const article = data[0]
+
+          const articleImage = document.getElementById('article-image');
+          const articleTitle = document.getElementById('article-title');
+          const articleParagraph = document.getElementsByClassName('article-paragraph');
+
+          // Add an event listener to check when the image fails to load
+          articleImage.addEventListener('error', function() {
+            console.log('error loading image')
+            this.style.display = 'none';
+          });
+
+          articleImage.addEventListener('load', function() {
+            console.log('image loaded')
+            this.style.display = 'block';
+          });
+
+          articleImage.src = `/assets/images/article-images/${_id}.jpg`; 
+          articleTitle.innerHTML = article.title;
+          articleParagraph[0].innerHTML = article.text;
+        })
+        .then(() => {
+          footer.style.visibility = 'visible'
+        })
+        .catch(err => {
+          console.log(err)
+          footer.style.visibility = 'visible'
+        })
+
+  </script>
   </body>
 </html>
