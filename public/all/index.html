@@ -219,6 +219,7 @@
           const articleParagraph = document.getElementsByClassName('article-paragraph');
 
           articleParagraph[0].innerHTML = article.text;
+          articleTitle.innerHTML = article.title;
 
 
           if (!isMobileDevice()) {
@@ -234,7 +235,6 @@
               });
 
               articleImage.src = `/assets/images/article-images/${_id}.jpg`; 
-              articleTitle.innerHTML = article.title;
           }
         })
         .then(() => {
