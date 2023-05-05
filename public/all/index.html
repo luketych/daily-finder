@@ -156,6 +156,33 @@
 
 
   <script type="text/javascript" async="async">
+
+      function isMobileDevice() {
+        const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+        const screenWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+
+        const mobileUserAgents = [
+          /android/i,
+          /webos/i,
+          /iphone/i,
+          /ipad/i,
+          /ipod/i,
+          /blackberry/i,
+          /windows phone/i
+        ];
+
+        // Check if the user agent matches any known mobile user agents
+        const isMobileUA = mobileUserAgents.some((regex) => regex.test(userAgent));
+
+        // Check if the screen width is less than or equal to 768 pixels
+        const isSmallScreen = screenWidth <= 768;
+
+        return isMobileUA || isSmallScreen;
+      }
+
+      console.log('isMobileDevice', isMobileDevice())
+
+
       // Get the current URL
       const urlParams = new URLSearchParams(window.location.search);
 
@@ -191,20 +218,24 @@
           const articleTitle = document.getElementById('article-title');
           const articleParagraph = document.getElementsByClassName('article-paragraph');
 
-          // Add an event listener to check when the image fails to load
-          articleImage.addEventListener('error', function() {
-            console.log('error loading image')
-            this.style.display = 'none';
-          });
-
-          articleImage.addEventListener('load', function() {
-            console.log('image loaded')
-            this.style.display = 'block';
-          });
-
-          articleImage.src = `/assets/images/article-images/${_id}.jpg`; 
-          articleTitle.innerHTML = article.title;
           articleParagraph[0].innerHTML = article.text;
+
+
+          if (!isMobileDevice()) {
+              // Add an event listener to check when the image fails to load
+              articleImage.addEventListener('error', function() {
+                console.log('error loading image')
+                this.style.display = 'none';
+              });
+
+              articleImage.addEventListener('load', function() {
+                console.log('image loaded')
+                this.style.display = 'block';
+              });
+
+              articleImage.src = `/assets/images/article-images/${_id}.jpg`; 
+              articleTitle.innerHTML = article.title;
+          }
         })
         .then(() => {
           footer.style.visibility = 'visible'
