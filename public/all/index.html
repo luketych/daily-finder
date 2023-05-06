@@ -188,6 +188,8 @@
 
       const _id = urlParams.get('_id');
 
+      console.log('_id', _id)
+
 
       const host = window.location.host
       const hostname = window.location.hostname
@@ -203,6 +205,9 @@
       // for local development: use http://
       let _host = (hostname === 'localhost') ? `http://localhost:${port}` : `https://${hostname}:${port}`
 
+      // @tmp
+      _host = `https://dailyfinder.org`
+
 
       const footer = document.getElementsByTagName('footer')[0]
       
@@ -213,6 +218,8 @@
         .then(resp => {
           const {data} = resp
           const article = data[0]
+
+          console.log('article', article)
 
           const articleImage = document.getElementById('article-image');
           const articleTitle = document.getElementById('article-title');
