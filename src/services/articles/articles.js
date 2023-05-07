@@ -33,7 +33,7 @@ export const articles = (app) => {
     around: {
       all: [
         schemaHooks.resolveExternal(articlesExternalResolver),
-        schemaHooks.resolveResult(articlesResolver)
+        //schemaHooks.resolveResult(articlesResolver)
       ]
     },
     before: {
