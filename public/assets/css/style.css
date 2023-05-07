@@ -3245,7 +3245,7 @@ input[type="button"].btn-block {
   display: block; }
 
 .navbar {
-  position: relative;
+  /* position: relative; */ /* @Luke to get rid of navbar scroll glitch. Together with adding top value for content beneath. */
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
