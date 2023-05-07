@@ -154,7 +154,7 @@
 					navbar.removeClass('scrolled sleep');
 				}
 			} 
-			if ( st > 500 ) {
+			if ( st > 550 ) {
 				if ( !navbar.hasClass('awake') ) {
 					navbar.addClass('awake');	
 				}
@@ -163,7 +163,7 @@
 					sd.addClass('sleep');
 				}
 			}
-			if ( st < 500 ) {
+			if ( st < 550 ) {
 				if ( navbar.hasClass('awake') ) {
 					navbar.removeClass('awake');
 					navbar.addClass('sleep');
