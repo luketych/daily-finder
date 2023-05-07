@@ -9215,8 +9215,17 @@ textarea.form-control {
 }
 
 
+
+.slidey {
+  height: 20em;
+  margin-top: 2em;
+}
 .related-topics-ads {
   margin: 10px 0;
+
+  /* @Luke for the stick slidey ads mechanism */
+  position: sticky;
+  top: 0;
 }
 .related-topics-ads h6 {
   font-weight: 600;

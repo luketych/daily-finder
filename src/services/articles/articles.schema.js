@@ -19,7 +19,12 @@ export const articlesSchema = Type.Object(
   { $id: 'Articles', additionalProperties: true }
 )
 export const articlesValidator = getValidator(articlesSchema, dataValidator)
-export const articlesResolver = resolve({})
+export const articlesResolver = resolve({
+  text: async function(val, msg, ctx) {
+      return val
+  }
+})
+
 
 export const articlesExternalResolver = resolve({})
 
