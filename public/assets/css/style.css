@@ -9227,12 +9227,20 @@ textarea.form-control {
   padding: 1em;
 }
 
+
+/* mobile */
 @media (max-width: 767.98px) {
   .article.container {
     padding-top: 1em;
     padding-bottom: 4em;
   }
+
+  h1,h2,h3,h4,h5 {
+    font-size: 24px;
+  }
 }
+
+/* non-mobile */
 @media (min-width: 767.98px) {
   .article.container {
     width: 50%;
