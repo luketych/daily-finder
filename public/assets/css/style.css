@@ -7317,7 +7317,7 @@ h1, h2, h3, h4, h5,
   @media (max-width: 991.98px) {
     .ftco-navbar-light {
       background: #3a4348 !important;
-      position: relative;
+      /* position: relative; */ /* @Luke */
       top: 0; } }
   .ftco-navbar-light .navbar-brand {
     color: #fff; }
@@ -9245,7 +9245,7 @@ textarea.form-control {
   .article.container {
     width: 50%;
 
-    padding-top: 4em;
+    padding-top: 3em;
     padding-bottom: 6em;
   }
 }
