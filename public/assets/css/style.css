@@ -3274,8 +3274,8 @@ input[type="button"].btn-block {
 
 .navbar-brand {
   display: inline-block;
-  padding-top: 0.3125rem;
-  padding-bottom: 0.3125rem;
+  padding-top: 4px; /* @Luke */
+  padding-bottom: 4px; /* @Luke */
   margin-right: 1rem;
   font-size: 1.25rem;
   line-height: inherit;
@@ -9223,15 +9223,15 @@ textarea.form-control {
 }
 
 
-.article.container {
+/* This interferes with spacing at top of articles.. */
+/*.article.container {
   padding: 1em;
-}
+}*/
 
 
 /* mobile */
 @media (max-width: 767.98px) {
   .article.container {
-    padding-top: 1em;
     padding-bottom: 4em;
   }
 
