@@ -9,5 +9,5 @@
     "default": 100,
     "max": 500
   },
-  "mongodb": "mongodb://127.0.0.1:27017/daily-finder"
+  "mongodb": "mongodb+srv://mongo:mongo@serverlessinstance0.g2ty7q8.mongodb.net/daily-finder"
 }
