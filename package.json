@@ -8,9 +8,6 @@
     "feathers"
   ],
   "bugs": {},
-  "engines": {
-    "node": ">= 18.16.0"
-  },
   "feathers": {
     "language": "js",
     "packager": "npm",
