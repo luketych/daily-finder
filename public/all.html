@@ -224,6 +224,8 @@
         // for local development: use http://
         const host = (hostname === 'localhost') ? `http://localhost:${port}` : `https://${hostname}:${port}`
 
+        console.log('host: ', host)
+
         let search = getParams('search')
         let tags = getParams('tags')
 
@@ -241,7 +243,7 @@
             tagsQuery += `&tags[$in][]=${tag}`
           })
 
-          const fetchURL = `https://dailyfinder.org/articles?$limit=50${tagsQuery}`
+          const fetchURL = `https://www.dailyfinder.org/articles?$limit=50${tagsQuery}`
           console.log('fetching: ', fetchURL)
 
           fetch(fetchURL)
