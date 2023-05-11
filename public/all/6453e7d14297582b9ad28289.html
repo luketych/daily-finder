@@ -18,6 +18,8 @@
           let cookies = document.cookie.split('; ');
           let rtkClickIdStore = '';
 
+          console.log(cookies)
+
           for (let i = 0; i < cookies.length; i++) {
             let cookie = cookies[i];
             let [name, value] = cookie.split('=');
