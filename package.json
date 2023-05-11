@@ -23,7 +23,7 @@
     "lib": "src",
     "test": "test"
   },
-  "main": "lib/index",
+  "main": "app/index",
   "type": "module",
   "scripts": {
     "start": "node src",

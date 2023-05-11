@@ -211,6 +211,8 @@
       
       footer.style.visibility = 'hidden'
 
+      console.log('_id', _id)
+
       fetch(`${_host}/articles?_id=${_id}`)
         .then(response => response.json())
         .then(resp => {
