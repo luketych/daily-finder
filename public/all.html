@@ -243,7 +243,7 @@
             tagsQuery += `&tags[$in][]=${tag}`
           })
 
-          const fetchURL = `https://www.dailyfinder.org/articles?$limit=50${tagsQuery}`
+          const fetchURL = `https://dailyfinder.org/articles?$limit=50${tagsQuery}`
           console.log('fetching: ', fetchURL)
 
           fetch(fetchURL)
