@@ -1,8 +1,10 @@
 {
   "host": "localhost",
+  "port-dev": 2020,
   "port": 3030,
   "public": "./public/",
   "cors_origins": [
+    "http://localhost:2020",
     "http://localhost:3030"
   ],
   "paginate": {
