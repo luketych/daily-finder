@@ -57,6 +57,15 @@ export default {
             ]
         }
     },
+
+    oncreate: function(vnode) {
+      window.onload = function() {
+          console.log("window.onload");
+          var script = document.createElement('script');
+          script.src = 'https://trk.dailyfinder.org/unilpclick.js?attribution=lastpaid&cookiedomain=dailyfinder.org&cookieduration=90&defaultcampaignid=6456c81c70175b0001e0f1d1&regviewonce=false';
+          document.body.appendChild(script);
+      };
+    }
 }
 
 
