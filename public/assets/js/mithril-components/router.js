@@ -1,4 +1,5 @@
 import m from 'https://cdn.skypack.dev/mithril'
+import render from 'https://cdn.skypack.dev/mithril-node-render'
 
 import ArticlePage from './ArticlePage.js'
 import Grid from './Grid.js'
@@ -17,13 +18,13 @@ let observer = new IntersectionObserver((entries, observer) => {
         if (entry.isIntersecting) {
             console.log('.footer-top is completely visible in the screen');
 
-            document.querySelector('.scroll-prompt').style.display = 'block'
+            // document.querySelector('.scroll-prompt').style.display = 'block'
 
             // You can also stop observing if you want
             // observer.unobserve(entry.target);
         }
         else {
-          document.querySelector('.scroll-prompt').style.display = 'none'
+          // document.querySelector('.scroll-prompt').style.display = 'none'
         }
     });
 }, { threshold: 1.0 }); // the callback will run when 100% of the target is visible

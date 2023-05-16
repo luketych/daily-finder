@@ -1,4 +1,5 @@
 import m from 'https://cdn.skypack.dev/mithril'
+import render from 'https://cdn.skypack.dev/mithril-node-render'
 
 import Nav from './Nav.js'
 import Footer from './Footer.js'
@@ -27,9 +28,11 @@ let articleID = undefined
 let articleJSON = undefined
 let imageURL = undefined
 
-export default {
+const ArticlePage = {
     oninit: async function(vnode) {
         articleID = vnode.attrs.articleID
+
+        console.log('articleID', articleID)
         
 
         articleJSON = await m.request({
@@ -143,6 +146,13 @@ export default {
     }
 
 }
+
+render(ArticlePage).then(function (html) {
+  console.log('html', html)
+})
+
+
+export default ArticlePage
 
 
 // export default {

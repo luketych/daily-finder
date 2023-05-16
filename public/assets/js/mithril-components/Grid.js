@@ -105,6 +105,7 @@ export default class Grid {
 
     view(vnode) {
         //const articlesData = vnode.attrs.articlesData
+        
 
         return [
             m('div', {class: "child-page-listing"}, [
@@ -113,9 +114,11 @@ export default class Grid {
 
                   // get first tag
                   this.tag = article.tags[0]
-                  
 
                   const imageURL = `/assets/images/${this.tag}/image_${ idx }.jpg`
+
+
+                  console.log('article._id', article._id)
 
 
                   return m(GridItem, {

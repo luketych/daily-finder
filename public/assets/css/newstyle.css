@@ -22,13 +22,13 @@ body {
 
 @media only screen and (max-width: 768px) {
   main {
-    padding: 2em 5%;
+    padding: 0 5% 2em 5%;
   }
 }
 
 @media only screen and (min-width: 769px) and (max-width: 900px) {
   main {
-    padding: 2em 20%;
+    padding: 0 20% 2em 20%;
   }
 }
 
