@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>DailyFinder</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!--<link rel="preload" href="assets/css/style.css" as="style" onload="this.rel='stylesheet'">-->
+    <link rel="preload" href="assets/css/newstyle.css" as="style" onload="this.rel='stylesheet'">
+    <link rel="preload" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" as="style" onload="this.rel='stylesheet'">
+
+
+    <!-- Google Tag Manager -->
+    <script async>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id=' + i + dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-MXCSL68');</script>
+    <!-- End Google Tag Manager -->
+
+  </head>
+  <body>
+    <div id="app"></div>
+
+    <script src="https://unpkg.com/mithril/mithril.js"></script>
+
+    <script>
+
+      var root = document.querySelector("#app")
+
+      function Article() {
+          let articleID = m.route.param('article')
+          let articleJSON
+          
+          return {
+              async oninit(vnode) {
+                  articleID = articleID || vnode.attrs.articleID
+
+                  console.log('oninit(): articleID', articleID)
+
+                  articleJSON = await m.request({
+                      method: "GET",
+                      url: "http://localhost:3030/api/articles/" + articleID
+                  })
+
+                  m.redraw() // only do if oninit is async otherwise ill get into big big trouble :(
+              },
+
+              view: function(vnode) {
+                  console.log('view(): articleJSON', articleJSON)
+
+                  if (articleJSON) {
+                      return articleJSON && m("main", [
+                          m( "section", { class: "ftco-section bg-light", style: "top:34px; padding-top:4px;" }, [
+                              m( "div", { class: "article container" }, [
+                                  m( "img", { id: "article-image", src: `/${articleJSON._id}.jpg`, alt: "article image", class: "img-fluid" } ),
+                                  m( "h2", { id: "article-title" }, articleJSON.title),
+                                  m( "p", { class: "article-text" } ),
+                                  m.trust(articleJSON.text)
+                              ] )
+                          ] )
+                      ])
+                  } else {
+                      return m("main", [
+                          m( "section", { class: "ftco-section bg-light", style: "top:34px; padding-top:4px;" }, [
+                              m( "div", { class: "article container" }, [
+                                  m( "img", { id: "article-image", src: `/${articleID}.jpg`, alt: "article image", class: "img-fluid" } ),
+                                  m( "h2", { id: "article-title" }, vnode.attrs.title),
+                                  m( "p", { class: "article-text" } ),
+                                  m.trust(vnode.attrs.content)
+                              ] )
+                          ] )
+                      ])
+                  }
+              }
+          }
+      }
+
+
+      async function TestSection() {
+          const articles = await fetch('http://localhost:3030/api/articles')
+          .then(response => response.json())
+          .then(jsonResp => jsonResp.data)
+
+          console.log('articles', articles)
+
+          return {
+            articles: [
+                {title: "Article 1", content: "Content of article 1", id: "1"},
+                {title: "Article 2", content: "Content of article 2", id: "2"},
+                // More articles...
+            ],
+
+            
+
+            view: function() {
+                return articles.map(function(article) {
+                    return m(Article, {title: article.title, text: article.text, articleID: article._id})
+                })
+            }
+          }
+      }
+
+
+      function Home() {
+          return {
+              view: function(vnode) {
+                  return m("main", [
+                    m( "p", { class: "article-paragraph" }, "Hello World" ),
+                  ])
+              }
+          }
+      }
+      
+
+      m.route.prefix = ""
+
+
+
+      m.route(root, "/", {
+          //"/": Home, // TODO change to Landing Page
+          
+          "/": {
+              onmatch: async function() {
+                  return (await import('./mithril/Home.js')).default
+              }
+          },
+
+          //"/articles": Articles,
+          "/article/:article": Article,
+
+          // SECTION ROUTES
+          "/test": TestSection,
+          /*"/health": HealthSection,
+          "/finance": FinanceSection,
+          "/travel": TravelSection,
+          "/tech": TechSection,
+          "/education": EducationSection,*/
+      })
+
+
+    </script>
+
+
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MXCSL68"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    
+  </body>
+</html>
