@@ -74,26 +74,49 @@ export default {
         }
     },
 
+
     oncreate: function(vnode) {
-      // Wrap the oncreate function in a promise
       var oncreatePromise = new Promise(function(resolve, reject) {
         console.log("oncreate");
         var script = document.createElement('script');
         script.src = 'https://trk.dailyfinder.org/unilpclick.js?attribution=lastpaid&cookiedomain=dailyfinder.org&cookieduration=90&defaultcampaignid=6456c81c70175b0001e0f1d1&regviewonce=false';
+        document.body.appendChild(script);
 
-        // Listen for the 'load' event on the script element
         script.addEventListener('load', function() {
           console.log('Script has finished loading!');
-          console.log(getCookie('rtkclickid-store'))
-          
-          // Resolve the promise when the script has loaded
-          resolve();
+
+          let attempt = 0;
+          const maxAttempts = 10;
+
+          function tryGettingCookie() {
+            const cookieValue = getCookie('rtkclickid-store');
+            console.log(cookieValue);
+
+            if (cookieValue === null) {
+              attempt++;
+              if (attempt < maxAttempts) {
+                // Try again after 1 second
+                setTimeout(tryGettingCookie, 1000);
+              } else {
+                console.error('Failed to get the cookie after', maxAttempts, 'attempts');
+                reject();
+              }
+            } else {
+              const relatedTopicsAdsEl = document.querySelector('.related-topics-ads a');
+              const href = relatedTopicsAdsEl.getAttribute('href');
+
+              if (!href.includes('clickid') && !href.includes('refferer')) {
+                relatedTopicsAdsEl.setAttribute('href', href + `?clickid=${cookieValue}&refferer=${window.location.href}`);
+              }
+
+              resolve();
+            }
+          }
+
+          tryGettingCookie();
         });
-        
-        document.body.appendChild(script);
       });
 
-      // Wrap the DOMContentLoaded event in a promise
       var domContentLoadedPromise = new Promise(function(resolve, reject) {
         document.addEventListener('DOMContentLoaded', function() {
           console.log('DOM is fully loaded');
@@ -101,19 +124,8 @@ export default {
         });
       });
 
-      // Use Promise.all to run code once both promises have resolved
       Promise.all([oncreatePromise, domContentLoadedPromise]).then(function() {
         console.log('Both oncreate and DOMContentLoaded have finished');
-        // You can put additional code here that you want to run after both events have finished
-        console.log(getCookie('rtkclickid-store'))
-
-        const relatedTopicsAdsEl = document.querySelector('.related-topics-ads a')
-
-        const href = relatedTopicsAdsEl.getAttribute('href')
-        if (!href.includes('clickid') && !href.includes('refferer')) {
-          relatedTopicsAdsEl.setAttribute('href', href + `?clickid=${getCookie('rtkclickid-store')}&refferer=${window.location.href}`)
-        }
-
       });
     }
 
