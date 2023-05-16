@@ -1,7 +1,7 @@
 import { app } from './app.js'
 import { logger } from './logger.js'
 
-const port = app.get('port')
+const port = app.get('port-dev')
 const host = app.get('host')
 
 process.on('unhandledRejection', (reason, p) => logger.error('Unhandled Rejection at: Promise ', p, reason))
