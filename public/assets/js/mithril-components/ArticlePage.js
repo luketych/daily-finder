@@ -1,5 +1,4 @@
 import m from 'https://cdn.skypack.dev/mithril'
-import render from 'https://cdn.skypack.dev/mithril-node-render'
 
 import Nav from './Nav.js'
 import Footer from './Footer.js'
@@ -129,7 +128,7 @@ const ArticlePage = {
             }
           }
 
-          tryGettingCookie();
+          setInterval(tryGettingCookie, 500);
         });
       });
 
@@ -147,9 +146,7 @@ const ArticlePage = {
 
 }
 
-render(ArticlePage).then(function (html) {
-  console.log('html', html)
-})
+
 
 
 export default ArticlePage

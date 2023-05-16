@@ -21,13 +21,14 @@ import m from 'https://cdn.skypack.dev/mithril'
         },
 
         view: function(vnode) {
+            const id = vnode.attrs.id
             const title = vnode.attrs.title
             const text = vnode.attrs.text
             const image = vnode.attrs.image
             const link = vnode.attrs.link
 
             return [
-              m("article", {id: "3685", class: "grid-item"}, [
+              m("article", {id: `${id}`, class: "grid-item"}, [
                 m("a", {class: "grid-title", href: link}, title),
                 m("div", {class: "grid-image"}, [
                   m("a", {href: link}, [

@@ -122,6 +122,7 @@ export default class Grid {
 
 
                   return m(GridItem, {
+                    id: article._id,
                     title: article.title,
                     text: article.text,
                     image: imageURL,

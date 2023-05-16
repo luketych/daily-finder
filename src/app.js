@@ -14,6 +14,10 @@ import { mongodb } from './mongodb.js'
 import { services } from './services/index.js'
 import { channels } from './channels.js'
 
+import render from 'mithril-node-render'
+import ArticlePage from '../public/assets/js/mithril-components/ArticlePage.js';
+
+
 const app = koa(feathers())
 
 // Load our app configuration (see config/ folder)
@@ -39,10 +43,35 @@ app.configure(
   })
 )
 
+
+
+
+render(ArticlePage).then(function (html) {
+  console.log('html', html)
+})
+
 // @blade?
 app.use(async (ctx) => {
-    await send(ctx, 'index.html', { root: app.get('public') });
+    const path = ctx.path;
+
+    if (path === '/test') {
+        ctx.type = 'html';
+        ctx.body = '<h1>Hello World</h1>';
+    }
+
+    else  await send(ctx, 'index.html', { root: app.get('public') });
 })
+
+
+// add your custom 404 page
+app.use(function* () {
+  // requests not matching the routes will have a status of 404 by now,
+  // but the response it not yet sent
+  if (this.status == 404) {
+    ctx.body = 'Nothing Here.';
+  }
+});
+
 
 app.config
 app.configure(channels)
