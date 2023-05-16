@@ -4,7 +4,23 @@ import Nav from './Nav.js'
 import Footer from './Footer.js'
 
 
+function getCookie(name) {
+    var cookies = document.cookie.split(';');
 
+    for(var i = 0; i < cookies.length; i++) {
+        var cookie = cookies[i];
+        var [cookieName, cookieValue] = cookie.split('=');
+
+        // Remove any leading/trailing spaces
+        cookieName = cookieName.replace(/^ +| +$/g, '');
+
+        if (cookieName === name) {
+            return decodeURIComponent(cookieValue);
+        }
+    }
+
+    return null;
+}
 
 
 let articleID = undefined
@@ -63,6 +79,13 @@ export default {
           console.log("window.onload");
           var script = document.createElement('script');
           script.src = 'https://trk.dailyfinder.org/unilpclick.js?attribution=lastpaid&cookiedomain=dailyfinder.org&cookieduration=90&defaultcampaignid=6456c81c70175b0001e0f1d1&regviewonce=false';
+
+          // Listen for the 'load' event on the script element
+          script.addEventListener('load', function() {
+              console.log('Script has finished loading!');
+              console.log(getCookie('rtkclickid-store'))
+          });
+          
           document.body.appendChild(script);
       };
     }
