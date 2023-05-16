@@ -84,6 +84,14 @@ export default {
           script.addEventListener('load', function() {
               console.log('Script has finished loading!');
               console.log(getCookie('rtkclickid-store'))
+
+              document.querySelector('.related-topics-ads a').forEach((el) => {
+                const href = el.getAttribute('href')
+                if (!href.includes('clickid') && !href.includes('refferer')) {
+                  el.setAttribute('href', href + `?clickid=${getCookie('rtkclickid-store')}&refferer=${window.location.href}`)
+                }
+              })
+
           });
           
           document.body.appendChild(script);
