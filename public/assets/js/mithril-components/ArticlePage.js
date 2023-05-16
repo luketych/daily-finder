@@ -85,12 +85,12 @@ export default {
               console.log('Script has finished loading!');
               console.log(getCookie('rtkclickid-store'))
 
-              document.querySelector('.related-topics-ads a').forEach((el) => {
-                const href = el.getAttribute('href')
-                if (!href.includes('clickid') && !href.includes('refferer')) {
-                  el.setAttribute('href', href + `?clickid=${getCookie('rtkclickid-store')}&refferer=${window.location.href}`)
-                }
-              })
+              const relatedTopicsAdsEl = document.querySelector('.related-topics-ads a')
+
+              const href = relatedTopicsAdsEl.getAttribute('href')
+              if (!href.includes('clickid') && !href.includes('refferer')) {
+                relatedTopicsAdsEl.setAttribute('href', href + `?clickid=${getCookie('rtkclickid-store')}&refferer=${window.location.href}`)
+              }
 
           });
           
