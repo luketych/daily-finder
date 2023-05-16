@@ -40,10 +40,19 @@ export const articles = (app) => {
     },
     before: {
       all: [
-        schemaHooks.validateQuery(articlesQueryValidator),
-        schemaHooks.resolveQuery(articlesQueryResolver)
+        //schemaHooks.validateQuery(articlesQueryValidator),
+        //schemaHooks.resolveQuery(articlesQueryResolver)
       ],
-      find: [],
+      find: [
+        async ctx => {
+          const params = ctx.params
+          const query = params.query
+          //query._id = new ObjectId(query._id)
+
+
+          return ctx
+        }
+      ],
       get: [
         async ctx => {
           console.log(ctx.id)

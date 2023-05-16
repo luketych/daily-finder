@@ -24,6 +24,8 @@ export default {
                   m("span", " | "),
                   m("a", {href: "/privacy-policy"}, "Privacy Policy"),
                   m("span", " | "),
+                  m("a", {href: "/sitemap.xml"}, "Sitemap"),
+                  m("span", " | "), 
                   m("a", {href: "/terms"}, "Terms Of Service"),
                 ]),
                 m("p", {class: "footer-company-name"}, "DailyFinder © 2023")
@@ -49,8 +51,8 @@ export default {
               ]),*/
               m("div", {class: "footer-right"}, [
                 m("p", {class: "footer-company-about"}, [
-                  m("span", "About the company"),
-                  "Lorem ipsum dolor sit amet, consectateur adispicing elit. Fusce euismod convallis velit, eu auctor lacus vehicula sit amet."
+                  m("span", "About DailyFinder"),
+                  "DailyFinder is a Canadian company specializing in curating content from health to finance, education to travel, and everything in between. In a world full of misinformation, we strive to provide you with the most accurate and up-to-date information, and keep up with the changing landscape of the internet."
                 ]),
                 m("div", {class: "footer-icons"}, [
                   m("a", {href: "#"}, [
@@ -69,9 +71,9 @@ export default {
               ]),
             ]),
 
-            m("div", {class: "footer-bottom"}, "SCROLL TO LOAD MORE"),
+            // m("div", {class: "footer-bottom"}, "SCROLL TO LOAD MORE"),
 
-            m(ScrollPrompt)
+            // m(ScrollPrompt)
           ])
         ]   
     }

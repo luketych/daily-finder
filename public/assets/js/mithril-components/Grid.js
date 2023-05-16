@@ -50,25 +50,25 @@ export default class Grid {
       })
     }
 
-    checkScroll() {
-        const BUFFER = 10
+    // checkScroll() {
+    //     const BUFFER = 10
 
-        if (!this.loading && window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - BUFFER) {
-            this.loadMore();
-        }
-    }
+    //     if (!this.loading && window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - BUFFER) {
+    //         this.loadMore();
+    //     }
+    // }
 
     oninit(vnode) {
         console.log('vnode', vnode)
         this.tag = vnode.attrs._tag;
         this.loadMore();
-        window.addEventListener('scroll', this.checkScroll.bind(this));
-        this.intervalId = setInterval(this.checkScroll.bind(this), 500);
+        //window.addEventListener('scroll', this.checkScroll.bind(this));
+        //this.intervalId = setInterval(this.checkScroll.bind(this), 500);
     }
 
     onremove() {
-        window.removeEventListener('scroll', this.checkScroll.bind(this));
-        clearInterval(this.intervalId);
+        //window.removeEventListener('scroll', this.checkScroll.bind(this));
+        //clearInterval(this.intervalId);
     }
 
     view(vnode) {

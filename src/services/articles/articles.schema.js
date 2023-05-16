@@ -29,7 +29,7 @@ export const articlesResolver = resolve({
 export const articlesExternalResolver = resolve({})
 
 // Schema for creating new entries
-export const articlesDataSchema = Type.Pick(articlesSchema, ['tags','title','text'], {
+export const articlesDataSchema = Type.Pick(articlesSchema, ['_id', 'tags','title','text'], {
   $id: 'ArticlesData'
 })
 export const articlesDataValidator = getValidator(articlesDataSchema, dataValidator)

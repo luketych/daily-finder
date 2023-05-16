@@ -4,7 +4,6 @@
   "port": 3030,
   "public": "./public/",
   "cors_origins": [
-    "http://localhost:2020",
     "http://localhost:3030"
   ],
   "paginate": {
