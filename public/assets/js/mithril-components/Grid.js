@@ -4,12 +4,31 @@ import GridItem from './GridItem.js'
 
 
 
+function generateRandNumArr(min, max) {
+    // Generate array with numbers from min to max
+    let arr = [];
+    for(let i = min; i <= max; i++) {
+        arr.push(i);
+    }
+  
+    // Shuffle array
+    for (let i = arr.length - 1; i > 0; i--) {
+        let j = Math.floor(Math.random() * (i + 1)); // random index from 0 to i
+        [arr[i], arr[j]] = [arr[j], arr[i]]; // swap elements
+    }
+  
+    return arr;
+}
+
+
 
 export default class Grid {
     constructor(vnode) {
         this.articles = []
         this.page = 0
         this.loading = false
+
+        this.imageIdxArr = []
     }
 
     loadMore() {
@@ -59,11 +78,24 @@ export default class Grid {
     // }
 
     oninit(vnode) {
-        console.log('vnode', vnode)
         this.tag = vnode.attrs._tag;
         this.loadMore();
         //window.addEventListener('scroll', this.checkScroll.bind(this));
         //this.intervalId = setInterval(this.checkScroll.bind(this), 500);
+
+        // get number of articles
+        let reqURL
+        if (this.tag) reqURL = `/api/articles?tags[$in][]=${this.tag}` // load 12 at time. It fits into divisions of 2 or 3
+        else reqURL = `/api/articles`
+
+        m.request({
+          method: "GET",
+          url: reqURL
+        })
+        .then(res => res.total)
+        .then(numArticles => {
+          this.imageIdxArr = generateRandNumArr(0, numArticles-1)
+        })
     }
 
     onremove() {
@@ -74,16 +106,22 @@ export default class Grid {
     view(vnode) {
         //const articlesData = vnode.attrs.articlesData
 
-        const numArticles = this.articles.length
-
         return [
             m('div', {class: "child-page-listing"}, [
               m("div", {class: "grid-container"}, [
                 this.articles.map((article, idx) => {
+
+                  // get first tag
+                  this.tag = article.tags[0]
+                  
+
+                  const imageURL = `/assets/images/${this.tag}/image_${ idx }.jpg`
+
+
                   return m(GridItem, {
                     title: article.title,
                     text: article.text,
-                    image: `/assets/images/image_${idx}.jpg`,
+                    image: imageURL,
                     link: `/article/${article._id}`
                   })
                 })
