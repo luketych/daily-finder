@@ -15,7 +15,7 @@ import { services } from './services/index.js'
 import { channels } from './channels.js'
 
 import render from 'mithril-node-render'
-import ArticlePage from '../public/assets/js/mithril-components/ArticlePage.js';
+//import ArticlePage from '../public/assets/js/mithril-components/ArticlePage.js';
 
 
 const app = koa(feathers())
@@ -46,9 +46,9 @@ app.configure(
 
 
 
-render(ArticlePage).then(function (html) {
-  console.log('html', html)
-})
+// render(ArticlePage).then(function (html) {
+//   console.log('html', html)
+// })
 
 // @blade?
 app.use(async (ctx) => {
