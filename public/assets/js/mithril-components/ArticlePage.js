@@ -18,7 +18,7 @@ export default {
 
         articleJSON = await m.request({
             method: "GET",
-            url: "http://localhost:3030/api/articles/" + articleID
+            url: "http://localhost:2020/api/articles/" + articleID
         })
 
         m.redraw() // only do if oninit is async otherwise ill get into big big trouble :(

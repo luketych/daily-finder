@@ -14,7 +14,7 @@ export default {
 
         const resp = await m.request({
             method: "GET",
-            url: "http://localhost:3030/api/articles?title=" + articleTitle
+            url: "http://localhost:2020/api/articles?title=" + articleTitle
         })
 
         articleJSON = resp.data[0]
