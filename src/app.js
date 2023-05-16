@@ -5,6 +5,7 @@ import { koa, rest, bodyParser, errorHandler, parseAuthentication, cors, serveSt
 import socketio from '@feathersjs/socketio'
 
 import corss from '@koa/cors'; 
+import send from 'koa-send'
 
 import { configurationValidator } from './configuration.js'
 import { logError } from './hooks/log-error.js'
@@ -25,6 +26,11 @@ app.use(errorHandler())
 app.use(parseAuthentication())
 app.use(bodyParser())
 
+
+
+
+
+
 // Configure services and transports
 app.configure(rest())
 app.configure(
@@ -32,6 +38,13 @@ app.configure(
     cors // : { origin: app.get('cors_origins') }
   })
 )
+
+// @blade?
+app.use(async (ctx) => {
+    await send(ctx, 'index.html', { root: app.get('public') });
+})
+
+app.config
 app.configure(channels)
 app.configure(mongodb)
 
@@ -51,5 +64,8 @@ app.hooks({
   setup: [],
   teardown: []
 })
+
+
+
 
 export { app }

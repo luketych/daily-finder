@@ -1,5 +1,7 @@
 // For more information about this file see https://dove.feathersjs.com/guides/cli/service.html
 
+import { ObjectId } from 'mongodb'
+
 import { hooks as schemaHooks } from '@feathersjs/schema'
 import {
   articlesDataValidator,
@@ -13,7 +15,7 @@ import {
 } from './articles.schema.js'
 import { ArticlesService, getOptions } from './articles.class.js'
 
-export const articlesPath = 'articles'
+export const articlesPath = 'api/articles'
 export const articlesMethods = ['find', 'get', 'create', 'patch', 'remove']
 
 export * from './articles.class.js'
@@ -42,7 +44,13 @@ export const articles = (app) => {
         schemaHooks.resolveQuery(articlesQueryResolver)
       ],
       find: [],
-      get: [],
+      get: [
+        async ctx => {
+          console.log(ctx.id)
+
+          return ctx
+        }
+      ],
       create: [
         schemaHooks.validateData(articlesDataValidator),
         schemaHooks.resolveData(articlesDataResolver),
@@ -65,10 +73,18 @@ export const articles = (app) => {
       remove: []
     },
     after: {
-      all: []
+      all: [
+        ctx => {
+          return ctx
+        }
+      ]
     },
     error: {
-      all: []
+      all: [
+        ctx => {
+          return ctx
+        }
+      ]
     }
   })
 }
