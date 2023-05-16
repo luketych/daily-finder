@@ -70,8 +70,9 @@ m.route(root, "/", {
                     return m("div", [
                         m(Nav),
                         m(Hero),
-                        m(Grid, { _tag: 'health' }) // tag doesn't work so I have to use _tag. I think tag is already used. 
+                        m(Grid, { _tag: 'health' }), // tag doesn't work so I have to use _tag. I think tag is already used. 
                         // ie https://mithril.js.org/hyperscript.html: var vnode = {tag: "div", attrs: {id: "box"}, children: [ /*...*/ ]}
+                        m(Footer)
                     ])
                 }
             };
@@ -86,8 +87,8 @@ m.route(root, "/", {
                     return m("div", [
                         m(Nav),
                         m(Hero),
-                        m(Grid, { _tag: 'finance' }) // tag doesn't work so I have to use _tag. I think tag is already used. 
-                        // ie https://mithril.js.org/hyperscript.html: var vnode = {tag: "div", attrs: {id: "box"}, children: [ /*...*/ ]}
+                        m(Grid, { _tag: 'finance' }),
+                        m(Footer) 
                     ])
                 }
             };
@@ -102,8 +103,8 @@ m.route(root, "/", {
                     return m("div", [
                         m(Nav),
                         m(Hero),
-                        m(Grid, { _tag: 'travel' }) // tag doesn't work so I have to use _tag. I think tag is already used. 
-                        // ie https://mithril.js.org/hyperscript.html: var vnode = {tag: "div", attrs: {id: "box"}, children: [ /*...*/ ]}
+                        m(Grid, { _tag: 'travel' }),
+                        m(Footer)
                     ])
                 }
             };
@@ -118,8 +119,8 @@ m.route(root, "/", {
                     return m("div", [
                         m(Nav),
                         m(Hero),
-                        m(Grid, { _tag: 'tech' }) // tag doesn't work so I have to use _tag. I think tag is already used. 
-                        // ie https://mithril.js.org/hyperscript.html: var vnode = {tag: "div", attrs: {id: "box"}, children: [ /*...*/ ]}
+                        m(Grid, { _tag: 'tech' }),
+                        m(Footer)
                     ])
                 }
             };
