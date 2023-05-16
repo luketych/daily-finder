@@ -85,13 +85,6 @@ export default {
         script.addEventListener('load', function() {
           console.log('Script has finished loading!');
           console.log(getCookie('rtkclickid-store'))
-
-          const relatedTopicsAdsEl = document.querySelector('.related-topics-ads a')
-
-          const href = relatedTopicsAdsEl.getAttribute('href')
-          if (!href.includes('clickid') && !href.includes('refferer')) {
-            relatedTopicsAdsEl.setAttribute('href', href + `?clickid=${getCookie('rtkclickid-store')}&refferer=${window.location.href}`)
-          }
           
           // Resolve the promise when the script has loaded
           resolve();
@@ -112,6 +105,15 @@ export default {
       Promise.all([oncreatePromise, domContentLoadedPromise]).then(function() {
         console.log('Both oncreate and DOMContentLoaded have finished');
         // You can put additional code here that you want to run after both events have finished
+        console.log(getCookie('rtkclickid-store'))
+
+        const relatedTopicsAdsEl = document.querySelector('.related-topics-ads a')
+
+        const href = relatedTopicsAdsEl.getAttribute('href')
+        if (!href.includes('clickid') && !href.includes('refferer')) {
+          relatedTopicsAdsEl.setAttribute('href', href + `?clickid=${getCookie('rtkclickid-store')}&refferer=${window.location.href}`)
+        }
+
       });
     }
 
