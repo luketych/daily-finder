@@ -59,6 +59,7 @@ app.configure(
 // @blade?
 app.use(async (ctx) => {
     const path = ctx.path;
+    const subdomains = ctx.subdomains;
 
     // custom 404
     // if (ctx.status == 404) {
@@ -70,9 +71,11 @@ app.use(async (ctx) => {
         ctx.body = '<h1>Hello World</h1>';
     }
 
-    else if (path === '/test/2') {
+    else if (RegExp('^\/article\/([^\/]+)$').test(path)) {
+        const id = path.split('/article/')[1];
+
         ctx.type = 'html';
-        await render(ArticlePage, { articleID: "6462ebd82783dd5e2aa16ec7" }).then(function (html) {
+        await render(ArticlePage, { articleID: id }).then(function (html) {
           ctx.body = html
         })
     }

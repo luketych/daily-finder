@@ -20,46 +20,49 @@ body {
 }
 
 
-@media only screen and (max-width: 768px) {
+
+@media all and (min-width: 1401px) {
+
+  .nav > .nav-list {
+    padding-right: 10%;
+  }
+
+  .nav .nav-logo {
+    padding-left: 25%;
+  }
+
   main {
-    padding: 0 5% 2em 5%;
+    padding: 5em 20%;
   }
 }
 
-@media only screen and (min-width: 769px) and (max-width: 900px) {
-  main {
-    padding: 0 20% 2em 20%;
-  }
-}
-
-@media only screen and (min-width: 901px) and (max-width: 1024px) {
-  main {
-    padding: 3em 25%;
-  }
-}
-
-
-@media only screen and (min-width: 1024px) and (max-width: 1250px) {
-  main {
-    padding: 4em 28%;
-  }
-}
-
-@media only screen and (min-width: 1251px) {
+@media (1251px <= width <= 1400px) {
   main {
     padding: 5em 32%;
   }
 }
 
-@media only screen and (min-width: 1401px) {
-  .nav > .nav-list {
-    padding-right: 10%;
+@media (1025px <= width <= 1250px) {
+  main {
+    padding: 4em 28%;
   }
 }
 
-@media only screen and (min-width: 1401px) {
-  .nav .nav-logo {
-    padding-left: 25%;
+@media (901px <= width <= 1024px) {
+  main {
+    padding: 3em 20%;
+  }
+}
+
+@media (769px <= width <= 900px) {
+  main {
+    padding: 0 5% 2em 5%;
+  }
+}
+
+@media all and (max-width: 768px) {
+  main {
+    padding: 0 8px 2em 8px;
   }
 }
 
