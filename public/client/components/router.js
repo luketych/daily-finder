@@ -1,5 +1,4 @@
 import m from 'mithril'
-import render from 'mithril-node-render'
 
 import ArticlePage from './ArticlePage.js'
 import Grid from './Grid.js'

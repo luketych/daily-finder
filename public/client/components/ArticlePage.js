@@ -109,6 +109,7 @@ const ArticlePage = {
     view: function(vnode) {
         if (articleJSON) {
             return articleJSON && [
+                m("meta", { name: "viewport", content: "width=device-width, initial-scale=1" }),
                 m("link", { rel: "stylesheet", href: "/assets/css/newstyle.css" }),
 
                 m(Nav),
