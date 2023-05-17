@@ -75,6 +75,9 @@ app.use(async (ctx) => {
         const id = path.split('/article/')[1];
 
         ctx.type = 'html';
+
+        console.log('id', id)
+
         await render(ArticlePage, { articleID: id }).then(function (html) {
           ctx.body = html
         })
