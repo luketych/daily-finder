@@ -33,7 +33,7 @@ const ArticlePage = {
     oninit: async function(vnode, waitFor) {
         articleID = vnode.attrs.articleID
 
-        let reqURL = `https://dailyfinder.org/api/articles/${articleID}"}`
+        let reqURL = `https://dailyfinder.org/api/articles/${articleID}`
 
         // articleJSON = waitFor(m.request({
         //     method: "GET",
