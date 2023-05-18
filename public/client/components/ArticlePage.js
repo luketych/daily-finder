@@ -190,8 +190,6 @@ const ArticlePage = {
                       .then(function (resp) { return resp.json() })
                       .then(function (data) { ip = data.ip });
 
-                      console.log('hrefs', hrefs);
-
 
                       document.querySelector('main').addEventListener('click', function(e) {
                         console.log('main clicked');

@@ -25,53 +25,53 @@ function getCookie(name) {
 
 // Promises for loading cookie stuff, if needed
 
-var oncreatePromise = new Promise(function(resolve, reject) {
-  console.log("oncreate");
-  var script = document.createElement('script');
-  script.src = 'https://trk.dailyfinder.org/unilpclick.js?attribution=lastpaid&cookiedomain=dailyfinder.org&cookieduration=90&defaultcampaignid=6456c81c70175b0001e0f1d1&regviewonce=false';
-  document.body.appendChild(script);
+// var oncreatePromise = new Promise(function(resolve, reject) {
+//   console.log("oncreate");
+//   var script = document.createElement('script');
+//   script.src = 'https://trk.dailyfinder.org/unilpclick.js?attribution=lastpaid&cookiedomain=dailyfinder.org&cookieduration=90&defaultcampaignid=6456c81c70175b0001e0f1d1&regviewonce=false';
+//   document.body.appendChild(script);
 
-  script.addEventListener('load', function() {
-    console.log('Script has finished loading!');
+//   script.addEventListener('load', function() {
+//     console.log('Script has finished loading!');
 
-    let attempt = 0;
-    const maxAttempts = 10;
+//     let attempt = 0;
+//     const maxAttempts = 10;
 
-    function tryGettingCookie() {
-      const cookieValue = getCookie('rtkclickid-store');
-      console.log(cookieValue);
+//     function tryGettingCookie() {
+//       const cookieValue = getCookie('rtkclickid-store');
+//       console.log(cookieValue);
 
-      if (cookieValue === null) {
-        attempt++;
-        if (attempt < maxAttempts) {
-          // Try again after 1 second
-          setTimeout(tryGettingCookie, 1000);
-        } else {
-          console.error('Failed to get the cookie after', maxAttempts, 'attempts');
-          reject();
-        }
-      } else {
-        const relatedTopicsAdsEl = document.querySelector('.related-topics-ads a');
-        const href = relatedTopicsAdsEl.getAttribute('href');
+//       if (cookieValue === null) {
+//         attempt++;
+//         if (attempt < maxAttempts) {
+//           // Try again after 1 second
+//           setTimeout(tryGettingCookie, 1000);
+//         } else {
+//           console.error('Failed to get the cookie after', maxAttempts, 'attempts');
+//           reject();
+//         }
+//       } else {
+//         const relatedTopicsAdsEl = document.querySelector('.related-topics-ads a');
+//         const href = relatedTopicsAdsEl.getAttribute('href');
 
-        if (!href.includes('clickid') && !href.includes('refferer')) {
-          relatedTopicsAdsEl.setAttribute('href', href + `?clickid=${cookieValue}&refferer=${window.location.href}`);
-        }
+//         if (!href.includes('clickid') && !href.includes('refferer')) {
+//           relatedTopicsAdsEl.setAttribute('href', href + `?clickid=${cookieValue}&refferer=${window.location.href}`);
+//         }
 
-        resolve();
-      }
-    }
+//         resolve();
+//       }
+//     }
 
-    setInterval(tryGettingCookie, 500);
-  });
-});
+//     setInterval(tryGettingCookie, 500);
+//   });
+// });
 
-var domContentLoadedPromise = new Promise(function(resolve, reject) {
-  document.addEventListener('DOMContentLoaded', function() {
-    console.log('DOM is fully loaded');
-    resolve();
-  });
-});
+// var domContentLoadedPromise = new Promise(function(resolve, reject) {
+//   document.addEventListener('DOMContentLoaded', function() {
+//     console.log('DOM is fully loaded');
+//     resolve();
+//   });
+// });
 
 
 
@@ -155,9 +155,9 @@ const ArticlePage = {
     oncreate: function(vnode) {
 
 
-      Promise.all([oncreatePromise, domContentLoadedPromise]).then(function() {
-        console.log('Both oncreate and DOMContentLoaded have finished');
-      });
+      // Promise.all([oncreatePromise, domContentLoadedPromise]).then(function() {
+      //   console.log('Both oncreate and DOMContentLoaded have finished');
+      // });
     }
 
 }

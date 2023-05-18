@@ -52,7 +52,7 @@ export default {
               m("div", {class: "footer-right"}, [
                 m("p", {class: "footer-company-about"}, [
                   m("span", "About DailyFinder"),
-                  "DailyFinder is a Canadian company specializing in curating content from health to finance, education to travel, and everything in between. In a world full of misinformation, we strive to provide you with the most accurate and up-to-date information, and keep up with the changing landscape of the internet."
+                  "DailyFinder is a company specializing in curating content from health to finance, education to travel, and everything in between. In a world full of misinformation, we strive to provide you with the most accurate and up-to-date information, and keep up with the changing landscape of the internet."
                 ]),
                 m("div", {class: "footer-icons"}, [
                   m("a", {href: "#"}, [
