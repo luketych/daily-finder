@@ -4,15 +4,6 @@ import { Type, getValidator, querySyntax } from '@feathersjs/typebox'
 import { ObjectIdSchema } from '@feathersjs/typebox'
 import { dataValidator, queryValidator } from '../../validators.js'
 
-// Main data model schema
-// articleID: '${articleID}',
-// href: e.target.href,
-// text: e.target.text,
-// hrefs: hrefs,
-// dtISO: new Date().toISOString(),
-// url: window.location.href,
-// userAgent: window.navigator.userAgent,
-// ip: ip
 export const logsSchema = Type.Object(
   {
     _id: ObjectIdSchema(),
@@ -34,7 +25,6 @@ export const logsExternalResolver = resolve({})
 
 // Schema for creating new entries
 export const logsDataSchema = Type.Pick(logsSchema, [
-  '_id',
   'articleID',
   'href',
   'text',

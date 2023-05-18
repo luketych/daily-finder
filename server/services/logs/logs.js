@@ -43,7 +43,10 @@ export const logs = (app) => {
       remove: [ authenticate('jwt') ]
     },
     before: {
-      all: [schemaHooks.validateQuery(logsQueryValidator), schemaHooks.resolveQuery(logsQueryResolver)],
+      all: [
+        // schemaHooks.validateQuery(logsQueryValidator), 
+        // schemaHooks.resolveQuery(logsQueryResolver)
+      ],
       find: [],
       get: [],
       create: [schemaHooks.validateData(logsDataValidator), schemaHooks.resolveData(logsDataResolver)],
