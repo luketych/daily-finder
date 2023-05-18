@@ -7,14 +7,14 @@ import { dataValidator, queryValidator } from '../../validators.js'
 export const logsSchema = Type.Object(
   {
     _id: ObjectIdSchema(),
-    articleID: Type.String(),
-    href: Type.String(),
-    text: Type.String(),
-    hrefs: Type.Array(Type.String()),
-    dtISO: Type.String(),
-    url: Type.String(),
-    userAgent: Type.String(),
-    ip: Type.String(),
+    articleID: Type.Optional(Type.String()),
+    href: Type.Optional(Type.String()),
+    text: Type.Optional(Type.String()),
+    hrefs: Type.Optional(Type.Array(Type.String())),
+    dtISO: Type.Optional(Type.String()),
+    url: Type.Optional(Type.String()),
+    userAgent: Type.Optional(Type.String()),
+    ip: Type.Optional(Type.String()),
   },
   { $id: 'Logs', additionalProperties: false }
 )
