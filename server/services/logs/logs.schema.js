@@ -16,7 +16,7 @@ export const logsSchema = Type.Object(
     userAgent: Type.Optional(Type.String()),
     ip: Type.Optional(Type.String()),
   },
-  { $id: 'Logs', additionalProperties: false }
+  { $id: 'Logs', additionalProperties: true }
 )
 export const logsValidator = getValidator(logsSchema, dataValidator)
 export const logsResolver = resolve({})

@@ -196,18 +196,19 @@ const ArticlePage = {
                       document.querySelector('main').addEventListener('click', function(e) {
                         console.log('main clicked');
                         //if(e.target.tagName === 'A') {
+                          console.log('a clicked', e.target.href));
                           fetch('https://dailyfinder.org/api/logs', {
                               method: 'POST',
                               headers: { 'Content-Type': 'application/json' },
                               body: JSON.stringify({ 
                                 articleID: '${articleID}',
-                                href: e.target.href,
                                 text: e.target.text,
                                 hrefs: hrefs,
                                 dtISO: new Date().toISOString(),
                                 url: window.location.href,
                                 userAgent: window.navigator.userAgent,
-                                ip: ip
+                                ip: ip,
+                                clickedHREF: e.target.href
                               })
                           })
                           .then(function (resp) {
