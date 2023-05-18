@@ -3,16 +3,41 @@
   "packageManager": "yarn@3.5.1",
   "version": "0.0.1",
   "type": "module",
+  "private": true,
+  "keywords": [
+    "feathers"
+  ],
+  "bugs": {},
+  "feathers": {
+    "language": "js",
+    "packager": "npm",
+    "database": "mongodb",
+    "framework": "koa",
+    "transports": [
+      "rest",
+      "websockets"
+    ],
+    "schema": "typebox"
+  },
+  "directories": {
+    "lib": "server",
+    "test": "test"
+  },
+  "main": "server/index",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "server": "node server/index.js"
+    "server": "node server/index.js",
+    "mocha": "cross-env NODE_ENV=test mocha test/ --recursive --exit",
+    "test": "npm run mocha"
   },
   "dependencies": {
     "@feathersjs/adapter-commons": "^5.0.1",
     "@feathersjs/authentication": "^5.0.1",
     "@feathersjs/authentication-client": "^5.0.2",
+    "@feathersjs/authentication-local": "^5.0.5",
+    "@feathersjs/authentication-oauth": "^5.0.5",
     "@feathersjs/configuration": "^5.0.1",
     "@feathersjs/errors": "^5.0.1",
     "@feathersjs/feathers": "^5.0.1",

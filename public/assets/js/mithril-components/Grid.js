@@ -117,8 +117,9 @@ export default class Grid {
 
                   const imageURL = `/assets/images/${this.tag}/image_${ idx }.jpg`
 
-
-                  console.log('article._id', article._id)
+                  // create link 
+                  if (this.tag) this.link = `/${this.tag}/${article._id}`
+                  else this.link = `/article/${article._id}`
 
 
                   return m(GridItem, {
@@ -126,7 +127,7 @@ export default class Grid {
                     title: article.title,
                     text: article.text,
                     image: imageURL,
-                    link: `/article/${article._id}`
+                    link: this.link
                   })
                 })
               ])
