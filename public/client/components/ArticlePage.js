@@ -176,32 +176,48 @@ const ArticlePage = {
 
                 m(Footer),
 
-                m("script", `
-                  window.onload = function() {
-                    console.log('window.onload');
+                m("script", { type: "text/javascript" }, `
+                    window.onload = function() {
+                      console.log('window.onload');
 
-                    // get all links in main
-                    const links = document.querySelectorAll('main a');
+                      // get all links in main
+                      const links = document.querySelectorAll('main a');
+                      // get hrefs 
+                      const hrefs = Array.from(links).map(function (link) { return link.href; });
+                      // get user ip
+                      let ip
+                      fetch('https://api.ipify.org?format=json')
+                      .then(function (resp) { return resp.json() })
+                      .then(function (data) { ip = data.ip });
 
-                    document.querySelector('main').addEventListener('click', function(e) {
-                      console.log('main clicked');
-                      if(e.target.tagName === 'A') {
-                        fetch('https://dailyfinder.org/api/logs', {
-                          method: 'POST',
-                          headers: {
-                            'Content-Type': 'application/json'
-                          },
-                          body: JSON.stringify({
-                            "articleID": '${articleID}',
-                            "rtkclickid-store": getCookie('rtkclickid-store'),
-                            "linkClicked": e.target.href,
-                            "referrer": window.location.href,
-                            "dtISO": new Date().toISOString(),
-                            "links": Array.from(links).map(link => link.href)
+
+                      document.querySelector('main').addEventListener('click', function(e) {
+                        console.log('main clicked');
+                        //if(e.target.tagName === 'A') {
+                          fetch('https://dailyfinder.org/api/logs', {
+                              method: 'POST',
+                              headers: { 'Content-Type': 'application/json' },
+                              body: JSON.stringify({ 
+                                articleID: '${articleID}',
+                                href: e.target.href,
+                                text: e.target.text,
+                                hrefs: hrefs,
+                                dtISO: new Date().toISOString(),
+                                url: window.location.href,
+                                userAgent: window.navigator.userAgent,
+                                ip: ip
+                              })
                           })
-                      }
-                    });
-                  };
+                          .then(function (resp) {
+                              if (!resp.ok) {
+                                  console.log(resp);
+                              }
+                              return resp.json();
+                          })
+                          .catch(function (e) { console.log(e) });
+                        //}
+                      });
+                    };
                 `),
 
 

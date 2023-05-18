@@ -5,10 +5,25 @@ import { ObjectIdSchema } from '@feathersjs/typebox'
 import { dataValidator, queryValidator } from '../../validators.js'
 
 // Main data model schema
+// articleID: '${articleID}',
+// href: e.target.href,
+// text: e.target.text,
+// hrefs: hrefs,
+// dtISO: new Date().toISOString(),
+// url: window.location.href,
+// userAgent: window.navigator.userAgent,
+// ip: ip
 export const logsSchema = Type.Object(
   {
     _id: ObjectIdSchema(),
-    text: Type.String()
+    articleID: Type.String(),
+    href: Type.String(),
+    text: Type.String(),
+    hrefs: Type.Array(Type.String()),
+    dtISO: Type.String(),
+    url: Type.String(),
+    userAgent: Type.String(),
+    ip: Type.String(),
   },
   { $id: 'Logs', additionalProperties: false }
 )
@@ -18,7 +33,17 @@ export const logsResolver = resolve({})
 export const logsExternalResolver = resolve({})
 
 // Schema for creating new entries
-export const logsDataSchema = Type.Pick(logsSchema, ['text'], {
+export const logsDataSchema = Type.Pick(logsSchema, [
+  '_id',
+  'articleID',
+  'href',
+  'text',
+  'hrefs',
+  'dtISO',
+  'url',
+  'userAgent',
+  'ip'
+], {
   $id: 'LogsData'
 })
 export const logsDataValidator = getValidator(logsDataSchema, dataValidator)
@@ -32,7 +57,17 @@ export const logsPatchValidator = getValidator(logsPatchSchema, dataValidator)
 export const logsPatchResolver = resolve({})
 
 // Schema for allowed query properties
-export const logsQueryProperties = Type.Pick(logsSchema, ['_id', 'text'])
+export const logsQueryProperties = Type.Pick(logsSchema, [
+  '_id',
+  'articleID',
+  'href',
+  'text',
+  'hrefs',
+  'dtISO',
+  'url',
+  'userAgent',
+  'ip'
+])
 export const logsQuerySchema = Type.Intersect(
   [
     querySyntax(logsQueryProperties),
