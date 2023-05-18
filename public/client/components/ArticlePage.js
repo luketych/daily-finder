@@ -196,7 +196,7 @@ const ArticlePage = {
                       document.querySelector('main').addEventListener('click', function(e) {
                         console.log('main clicked');
                         //if(e.target.tagName === 'A') {
-                          console.log('a clicked', e.target.href));
+                          console.log('a clicked', e.target.href);
                           fetch('https://dailyfinder.org/api/logs', {
                               method: 'POST',
                               headers: { 'Content-Type': 'application/json' },
