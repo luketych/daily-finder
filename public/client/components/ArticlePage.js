@@ -2,6 +2,9 @@
 
 import m from 'mithril'
 
+import Head from './Head.js'
+import Tail from './Tail.js'
+
 import Nav from './Nav.js'
 import Footer from './Footer.js'
 
@@ -160,6 +163,8 @@ const ArticlePage = {
                 m("meta", { name: "viewport", content: "width=device-width, initial-scale=1" }),
                 m("link", { rel: "stylesheet", href: "/assets/css/newstyle.css" }),
 
+                m(Head),
+
                 m(Nav),
 
                 m("main", [
@@ -175,6 +180,8 @@ const ArticlePage = {
                 ]),
 
                 m(Footer),
+
+                m(Tail),
 
                 m("script", { type: "text/javascript" }, `
                     window.onload = function() {
@@ -240,7 +247,9 @@ const ArticlePage = {
                     ])
                 ]),
 
-                m(Footer)
+                m(Footer),
+
+                m(Tail)
             ]
         }
     },
